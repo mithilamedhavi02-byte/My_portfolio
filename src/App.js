@@ -22,21 +22,28 @@ const LoadingScreen = ({ isLoading }) => {
 
 // ==================== Video Background Component ==================== 
 const VideoBackground = () => {
+  const [videoError, setVideoError] = useState(false);
+
   return (
     <div className="video-background-container">
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-        className="portfolio-background-video"
-      >
-        {/* විවිධ පෙත් අත්හදා බලන්න */}
-        <source src="videos/PV1.mp4" type="video/mp4" />
-        <source src="./videos/PV1.mp4" type="video/mp4" />
-        <source src="/videos/PV1.mp4" type="video/mp4" />
-        <source src="%PUBLIC_URL%/videos/PV1.mp4" type="video/mp4" />
-      </video>
+      {!videoError ? (
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="portfolio-background-video"
+          onError={() => setVideoError(true)}
+        >
+          <source src="/videos/PV1.mp4" type="video/mp4" />
+          <source src="./videos/PV1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div className="video-fallback">
+          <div className="fallback-animation"></div>
+        </div>
+      )}
       <div className="video-background-overlay"></div>
     </div>
   );
@@ -49,10 +56,9 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
     if (e) e.preventDefault();
     onNavClick(section);
     
-    // සුමට ස්ක්‍රෝල් කිරීම
     const element = document.getElementById(section);
     if (element) {
-      const navbarHeight = document.querySelector('.navbar').offsetHeight;
+      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
       
@@ -62,7 +68,6 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
       });
     }
     
-    // Mobile නම් menu close කරන්න
     if (window.innerWidth <= 768) {
       onMenuToggle();
     }
@@ -75,7 +80,7 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
   return ( 
     <nav className={`navbar ${isMenuOpen ? 'nav-open' : ''}`}> 
       <div className="nav-container"> 
-        <div className="logo" onClick={handleLogoClick}> 
+        <div className="logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}> 
           <span className="logo-text">Mithila</span> 
           <span className="logo-dot"></span> 
         </div> 
@@ -86,7 +91,7 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
           <span className={`toggle-line ${isMenuOpen ? 'active' : ''}`}></span> 
         </div> 
         
-        <ul className="nav-menu"> 
+        <ul className={`nav-menu ${isMenuOpen ? 'nav-open' : ''}`}> 
           {['home', 'about', 'skills', 'projects', 'contact'].map((section) => ( 
             <li key={section}> 
               <a 
@@ -136,49 +141,41 @@ const HeroSection = ({ onDownloadCV }) => {
     let timer;
     
     if (!isFirstNameComplete) {
-      // පළමු නම type කිරීම
       if (currentIndex < firstName.length && !isDeleting) {
         timer = setTimeout(() => {
           setDisplayText(prev => prev + firstName[currentIndex]);
           setCurrentIndex(prev => prev + 1);
         }, typingSpeed);
       } else if (currentIndex === firstName.length && !isDeleting) {
-        // පළමු නම අවසන් වූ පසු පොස් වීම
         timer = setTimeout(() => {
           setIsDeleting(true);
         }, pauseDuration);
       } else if (isDeleting && currentIndex > 0) {
-        // පළමු නම delete කිරීම
         timer = setTimeout(() => {
           setDisplayText(prev => prev.slice(0, -1));
           setCurrentIndex(prev => prev - 1);
         }, deletingSpeed);
       } else if (isDeleting && currentIndex === 0) {
-        // පළමු නම delete අවසන් වූ පසු
         setIsDeleting(false);
         setIsFirstNameComplete(true);
         setCurrentIndex(0);
       }
     } else {
-      // සම්පූර්ණ නම type කිරීම
       if (currentIndex < fullName.length && !isDeleting) {
         timer = setTimeout(() => {
           setDisplayText(prev => prev + fullName[currentIndex]);
           setCurrentIndex(prev => prev + 1);
         }, typingSpeed);
       } else if (currentIndex === fullName.length && !isDeleting) {
-        // සම්පූර්ණ නම අවසන් වූ පසු පොස් වීම
         timer = setTimeout(() => {
           setIsDeleting(true);
         }, pauseDuration * 2);
       } else if (isDeleting && currentIndex > 0) {
-        // සම්පූර්ණ නම delete කිරීම
         timer = setTimeout(() => {
           setDisplayText(prev => prev.slice(0, -1));
           setCurrentIndex(prev => prev - 1);
         }, deletingSpeed);
       } else if (isDeleting && currentIndex === 0) {
-        // සම්පූර්ණ නම delete අවසන් වූ පසු
         setIsDeleting(false);
         setIsFirstNameComplete(false);
         setCurrentIndex(0);
@@ -186,7 +183,7 @@ const HeroSection = ({ onDownloadCV }) => {
     }
 
     return () => clearTimeout(timer);
-  }, [currentIndex, isDeleting, isFirstNameComplete]);
+  }, [currentIndex, isDeleting, isFirstNameComplete, firstName, fullName, typingSpeed, deletingSpeed, pauseDuration]);
 
   return ( 
     <section id="home" className="hero"> 
@@ -201,7 +198,6 @@ const HeroSection = ({ onDownloadCV }) => {
           </h1> 
           <div className="hero-subtitle"> 
             <span className="subtitle-text">Frontend Developer</span> 
-            
           </div> 
           <p className="hero-description"> 
             I craft <span className="highlight-word">digital experiences</span> that blend beautiful design with seamless functionality. Specializing in <span className="tech-stack"> React, JavaScript,</span> and modern web technologies. 
@@ -223,7 +219,6 @@ const HeroSection = ({ onDownloadCV }) => {
           </div> 
         </div> 
       </div> 
-    
     </section> 
   ); 
 };
@@ -309,14 +304,15 @@ const AboutSection = ({ onDownloadCV }) => {
   ); 
 }; 
 
+// ==================== Skills Section ==================== 
 const SkillsSection = () => { 
   const skills = [ 
     { id: 1, name: "HTML", image: "/icons/html.png", color: "#e34f26" }, 
     { id: 2, name: "CSS", image: "/icons/css.png", color: "#1572b6" }, 
-    { id: 3, name: "JavaScript", image: "/icons/js (3).png", color: "#f7df1e" }, 
-    { id: 4, name: "React", image: "/icons/react (2).png", color: "#61dafb" }, 
+    { id: 3, name: "JavaScript", image: "/icons/js.png", color: "#f7df1e" }, 
+    { id: 4, name: "React", image: "/icons/react.png", color: "#61dafb" }, 
     { id: 5, name: "Node", image: "/icons/node.png", color: "#339933" }, 
-    { id: 6, name: "Python", image: "/icons/python (1).png", color: "#3776ab" }, 
+    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab" }, 
   ]; 
 
   return ( 
@@ -340,7 +336,15 @@ const SkillsSection = () => {
                 <div className="hexagon-3d"> 
                   <div className="hexagon-3d-front"> 
                     <div className="skill-circle"> 
-                      <img src={skill.image} alt={skill.name} className="skill-icon-image" /> 
+                      <img 
+                        src={skill.image} 
+                        alt={skill.name} 
+                        className="skill-icon-image"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = skill.name.charAt(0);
+                        }}
+                      /> 
                     </div> 
                   </div> 
                   <div className="hexagon-3d-back"></div> 
@@ -357,13 +361,13 @@ const SkillsSection = () => {
 // ==================== Projects Section ==================== 
 const ProjectsSection = () => { 
   const projects = [ 
-      { 
+    { 
       id: 3, 
       title: "Class Attendance Management System (CAMS)", 
       description: "A database-focused system to record, monitor, and manage student attendance over a 10-week period. Provides separate interfaces for students and lecturers.", 
       tech: ['MySQL', 'JavaScript', 'HTML/CSS'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements", 
-      liveDemoUrl: "https://ecommerce-demo.vercel.app", 
+      liveDemoUrl: "#", 
       featured: false 
     },
     { 
@@ -372,19 +376,18 @@ const ProjectsSection = () => {
       description: "Productivity application with real-time collaboration", 
       tech: ['React', 'Firebase', 'Material UI'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-      liveDemoUrl: "https://taskmanager-demo.vercel.app", 
+      liveDemoUrl: "#", 
       featured: false 
     }, 
-   {
-  id: 5,
-  title: "AURORA CEYLON",
-  description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
-  tech: ['html', 'css', 'JavaScript'],
-  githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
-  liveDemoUrl: "https://portfolio-demo.vercel.app",
-  featured: false
-}
-
+    {
+      id: 5,
+      title: "AURORA CEYLON",
+      description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
+      liveDemoUrl: "#",
+      featured: false
+    }
   ]; 
 
   return ( 
@@ -446,14 +449,6 @@ const ProjectsSection = () => {
     </section> 
   ); 
 }; 
-
-
-
-
-
-
-
-
 
 // ==================== Contact Section ==================== 
 const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) => { 
@@ -606,14 +601,6 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
                       >
                         GitHub
                       </a>
-                      <a 
-                        href="https://twitter.com" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="social-link"
-                      >
-                        Twitter
-                      </a>
                     </div>
                   </div>
                 </motion.div>
@@ -760,13 +747,21 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
   ); 
 };
 
-
-
-
 // ==================== Footer Component ==================== 
-const Footer = ({ onDownloadCV }) => { 
+const Footer = () => { 
   return ( 
     <footer className="footer"> 
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-logo">
+            <span className="logo-text">Mithila Medhavi</span>
+            <span className="logo-dot"></span>
+          </div>
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer> 
   ); 
 }; 
@@ -788,7 +783,8 @@ const BackgroundElements = ({ mousePosition, scrollProgress }) => {
         className="mouse-follower"
         style={{ 
           left: `${mousePosition.x}px`, 
-          top: `${mousePosition.y}px` 
+          top: `${mousePosition.y}px`,
+          transform: 'translate(-50%, -50%)'
         }}
       ></div> 
 
@@ -823,7 +819,7 @@ const App = () => {
   useEffect(() => { 
     const timer = setTimeout(() => { 
       setIsLoading(false); 
-    }, 3000); 
+    }, 2500); 
 
     return () => clearTimeout(timer); 
   }, []); 
@@ -837,14 +833,31 @@ const App = () => {
     }; 
 
     const handleScroll = () => { 
-      const scrollTop = window.pageYOffset; 
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight; 
-      const progress = (scrollTop / docHeight) * 100; 
-      setScrollProgress(progress); 
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+      
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
     }; 
 
     window.addEventListener('mousemove', handleMouseMove); 
-    window.addEventListener('scroll', handleScroll); 
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
     return () => { 
       window.removeEventListener('mousemove', handleMouseMove); 
@@ -887,41 +900,58 @@ const App = () => {
   }; 
 
   const downloadSimplePDF = () => { 
-    const pdf = new jsPDF(); 
-    
-    pdf.setFontSize(20); 
-    pdf.text('Mithila Medhavi - Portfolio', 105, 15, { align: 'center' }); 
-    
-    pdf.setFontSize(12); 
-    pdf.text('Frontend Developer | React Specialist', 105, 25, { align: 'center' }); 
-    
-    pdf.text('Email: mithila.medhavi@example.com', 20, 40); 
-    pdf.text('Phone: +94 77 123 4567', 20, 50); 
-    pdf.text('Location: Colombo, Sri Lanka', 20, 60); 
-    
-    pdf.text('Technical Skills:', 20, 80); 
-    pdf.text('- React.js, JavaScript, TypeScript', 30, 90); 
-    pdf.text('- HTML5, CSS3, SASS, Tailwind', 30, 100); 
-    pdf.text('- Node.js, Express, MongoDB', 30, 110); 
-    pdf.text('- Git, Webpack, REST APIs', 30, 120); 
-    
-    pdf.text('Professional Experience:', 20, 140); 
-    pdf.text('- 3+ years in Frontend Development', 30, 150); 
-    pdf.text('- 25+ Projects Completed', 30, 160); 
-    pdf.text('- 15+ Happy Clients', 30, 170); 
-    
-    pdf.text('Education:', 20, 190); 
-    pdf.text('- BSc in Computer Science', 30, 200); 
-    pdf.text('- Full Stack Web Development Certification', 30, 210); 
-    
-    pdf.save('Mithila_Medhavi_CV.pdf'); 
+    try {
+      const pdf = new jsPDF();
+      
+      pdf.setFontSize(24);
+      pdf.setTextColor(108, 99, 255);
+      pdf.text('Mithila Medhavi', 105, 20, { align: 'center' });
+      
+      pdf.setFontSize(16);
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Frontend Developer | React Specialist', 105, 30, { align: 'center' });
+      
+      pdf.setFontSize(12);
+      pdf.text('Contact Information:', 20, 50);
+      pdf.text('Email: mithilamedhavi02@gmail.com', 20, 60);
+      pdf.text('Phone: +94 767100617', 20, 70);
+      pdf.text('Location: 3/C Palugama, Dompe, Sri Lanka', 20, 80);
+      
+      pdf.text('Technical Skills:', 20, 100);
+      const skills = [
+        'React.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3',
+        'Node.js', 'Git', 'Webpack', 'Python', 'MySQL'
+      ];
+      skills.forEach((skill, index) => {
+        pdf.text(`• ${skill}`, 25, 110 + (index * 7));
+      });
+      
+      pdf.text('Professional Experience:', 20, 180);
+      pdf.text('• Frontend Developer (2021 - Present)', 25, 190);
+      pdf.text('  Freelance & Contract Projects', 30, 197);
+      pdf.text('• Web Development Intern (2020 - 2021)', 25, 207);
+      pdf.text('  Tech Startup Colombo', 30, 214);
+      
+      pdf.text('Education:', 20, 230);
+      pdf.text('• BSc Computer Science (2016 - 2020)', 25, 240);
+      pdf.text('  University of Colombo', 30, 247);
+      
+      pdf.text('Projects:', 20, 260);
+      pdf.text('• Class Attendance Management System (CAMS)', 25, 270);
+      pdf.text('• Eventry Ticket Booking System', 25, 277);
+      pdf.text('• Aurora Ceylon Jewelry Website', 25, 284);
+      
+      pdf.save('Mithila_Medhavi_Portfolio.pdf');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Error generating PDF. Please try again.');
+    }
   }; 
 
   return ( 
     <div className="portfolio" ref={portfolioRef}> 
       <LoadingScreen isLoading={isLoading} /> 
       
-      {/* Video Background - PV1 වීඩියෝව */}
       <VideoBackground />
       
       <BackgroundElements 
@@ -957,9 +987,7 @@ const App = () => {
         onSubmit={handleFormSubmit}
       /> 
       
-      <Footer 
-        onDownloadCV={downloadSimplePDF}
-      /> 
+      <Footer /> 
     </div> 
   ); 
 }; 
