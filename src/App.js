@@ -106,16 +106,7 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
           ))} 
           
           <li className="nav-download">
-            <button 
-              className="download-cv-btn" 
-              onClick={(e) => {
-                e.preventDefault();
-                onDownloadCV();
-              }}
-            >
-              <span className="btn-icon">📥</span> 
-              Download CV
-            </button>
+           
           </li>
         </ul> 
       </div> 
