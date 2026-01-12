@@ -224,7 +224,7 @@ const AboutSection = ({ onDownloadCV }) => {
             <span className="title-number"></span> 
             About Me 
           </h2> 
-          <div className="section-subtitle">Get to know me better</div> 
+          
         </div> 
         <div className="about-content"> 
           <div className="about-text"> 
@@ -249,12 +249,8 @@ const AboutSection = ({ onDownloadCV }) => {
               </div> 
             </div> 
             <div className="skills-preview"> 
-              <h4>Core Technologies</h4> 
-              <div className="skills-tags"> 
-                {['React.js', 'JavaScript', 'TypeScript', 'CSS3', 'HTML5', 'Node.js', 'Git', 'Webpack'].map(skill => ( 
-                  <span key={skill} className="skill-tag">{skill}</span> 
-                ))} 
-              </div> 
+               
+              
             </div> 
           </div> 
           <div className="about-visual"> 
