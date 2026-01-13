@@ -224,71 +224,138 @@ const AboutSection = ({ onDownloadCV }) => {
             <span className="title-number"></span> 
             About Me 
           </h2> 
-          
         </div> 
         <div className="about-content"> 
           <div className="about-text"> 
             <div className="about-intro"> 
-              <h3> Sri Lanka</h3> 
+              <h3>Software Engineering Graduate | Sri Lanka</h3> 
               <p> 
-                With over <span className="highlight">3 years</span> of experience in web development, I specialize in creating responsive, user-friendly applications that provide exceptional user experiences. 
+                A passionate and dedicated <span className="highlight">Computer Science graduate</span> with strong foundation in software development. 
+                Eager to apply academic knowledge and project experience to real-world challenges in the tech industry.
               </p> 
             </div> 
+            
             <div className="about-details"> 
               <div className="detail-item"> 
-                <h4>🎯 My Focus</h4> 
-                <p>React.js, Modern JavaScript, CSS Architecture</p> 
+                <h4>🎯 Technical Focus</h4> 
+                <p>Full-Stack Development (MERN), Modern JavaScript, Responsive Web Design, Database Systems</p> 
               </div> 
               <div className="detail-item"> 
-                <h4>💡 My Approach</h4> 
-                <p>Clean code, performance optimization, user-centric design</p> 
+                <h4>💡 Development Approach</h4> 
+                <p>Clean code practices, problem-solving mindset, agile methodologies, collaborative teamwork</p> 
               </div> 
               <div className="detail-item"> 
-                <h4>🚀 My Goal</h4> 
-                <p>Build digital products that make a difference</p> 
+                <h4>🚀 Career Goal</h4> 
+                <p>To contribute to innovative projects and grow as a professional software engineer</p> 
               </div> 
             </div> 
-            <div className="skills-preview"> 
-               
-              
-            </div> 
+            
+            {/* New: Portfolio Projects Preview */}
+            <div className="projects-preview">
+              <h4>🎓 Academic & Personal Projects</h4>
+              <div className="project-tags">
+                <span className="project-tag">University Management System</span>
+                <span className="project-tag">E-Commerce Website</span>
+                <span className="project-tag">Mobile App Development</span>
+                <span className="project-tag">Final Year Project</span>
+              </div>
+            </div>
+            
+            {/* Skills Section - Updated for Fresh Graduate */}
+            <div className="skills-preview">
+              <h4>🛠️ Technical Skills</h4>
+              <div className="skills-categories">
+                <div className="skill-category">
+                  <h5>Frontend</h5>
+                  <p>React.js, JavaScript (ES6+), HTML5, CSS3, Bootstrap</p>
+                </div>
+                <div className="skill-category">
+                  <h5>Backend</h5>
+                  <p>Node.js, Express.js, REST APIs, MongoDB, MySQL</p>
+                </div>
+                <div className="skill-category">
+                  <h5>Tools & Others</h5>
+                  <p>Git/GitHub, Postman, VS Code, Agile/Scrum, Figma (Basic)</p>
+                </div>
+              </div>
+            </div>
           </div> 
+          
           <div className="about-visual"> 
             <div className="experience-card"> 
               <div className="card-header"> 
-                <h3>Experience & Education</h3> 
+                <h3>Education & Experience</h3> 
               </div> 
               <div className="card-content"> 
                 <div className="timeline"> 
+                  {/* Updated Timeline for Fresh Graduate */}
                   <div className="timeline-item"> 
-                    <div className="timeline-year">2021 - Present</div> 
+                    <div className="timeline-year">2024</div> 
                     <div className="timeline-content"> 
-                      <h4>Frontend Developer</h4> 
-                      <p>Freelance & Contract Projects</p> 
+                      <h4>BSc (Hons) Computer Science</h4> 
+                      <p>University of Colombo | GPA: 3.5/4.0</p>
+                      <p className="timeline-note">Specialized in Software Engineering</p>
                     </div> 
                   </div> 
+                  
                   <div className="timeline-item"> 
-                    <div className="timeline-year">2020 - 2021</div> 
+                    <div className="timeline-year">2023</div> 
                     <div className="timeline-content"> 
-                      <h4>Web Development Intern</h4> 
-                      <p>Tech Startup Colombo</p> 
+                      <h4>Final Year Project</h4> 
+                      <p>"Smart Campus Management System"</p>
+                      <p className="timeline-note">Full-stack web application</p>
                     </div> 
                   </div> 
+                  
                   <div className="timeline-item"> 
-                    <div className="timeline-year">2016 - 2020</div> 
+                    <div className="timeline-year">2022</div> 
                     <div className="timeline-content"> 
-                      <h4>BSc Computer Science</h4> 
-                      <p>University of Colombo</p> 
+                      <h4>Software Development Intern</h4> 
+                      <p>Tech Solutions Lanka (3 months)</p>
+                      <p className="timeline-note">Worked on frontend development</p>
+                    </div> 
+                  </div> 
+                  
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2020 - 2024</div> 
+                    <div className="timeline-content"> 
+                      <h4>University Activities</h4> 
+                      <p>Computer Society Member</p>
+                      <p className="timeline-note">Hackathon participant, Tech workshops</p>
                     </div> 
                   </div> 
                 </div> 
               </div> 
+              
+              {/* New: Achievement/Highlight Section */}
+              <div className="card-highlights">
+                <h4>🏆 Key Highlights</h4>
+                <ul>
+                  <li>Dean's List - 2 semesters</li>
+                  <li>Published research paper in university journal</li>
+                  <li>Completed 5+ academic software projects</li>
+                  <li>Active GitHub portfolio with code samples</li>
+                </ul>
+              </div>
             </div> 
           </div> 
         </div> 
+        
+        {/* New: Call to Action for Fresh Graduate */}
+        <div className="about-cta">
+          <button className="btn btn-primary" onClick={onDownloadCV}>
+            Download My CV
+          </button>
+          <a href="#projects" className="btn btn-secondary">
+            View My Projects
+          </a>
+          <a href="#contact" className="btn btn-outline">
+            Contact Me
+          </a>
+        </div>
       </div> 
-    </section> 
-  ); 
+    </section>
+  );
 }; 
 
 // ==================== Skills Section ==================== 
