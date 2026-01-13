@@ -229,7 +229,7 @@ const AboutSection = ({ onDownloadCV }) => {
         <div className="about-content"> 
           <div className="about-text"> 
             <div className="about-intro"> 
-              <h3>Passionate Frontend Developer from Sri Lanka</h3> 
+              <h3> Sri Lanka</h3> 
               <p> 
                 With over <span className="highlight">3 years</span> of experience in web development, I specialize in creating responsive, user-friendly applications that provide exceptional user experiences. 
               </p> 
