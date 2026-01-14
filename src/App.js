@@ -228,7 +228,7 @@ const AboutSection = ({ onDownloadCV }) => {
         <div className="about-content"> 
           <div className="about-text"> 
             <div className="about-intro"> 
-              <h3>Software Engineering Graduate | Sri Lanka</h3> 
+              <h3>Software Engineering Graduate</h3> 
               <p> 
                 A passionate and dedicated <span className="highlight">Computer Science graduate</span> with strong foundation in software development. 
                 Eager to apply academic knowledge and project experience to real-world challenges in the tech industry.
