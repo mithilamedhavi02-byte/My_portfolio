@@ -343,9 +343,7 @@ const AboutSection = ({ onDownloadCV }) => {
         
         {/* New: Call to Action for Fresh Graduate */}
         <div className="about-cta">
-          <button className="btn btn-primary" onClick={onDownloadCV}>
-            Download My CV
-          </button>
+       
           <a href="#projects" className="btn btn-secondary">
             View My Projects
           </a>
