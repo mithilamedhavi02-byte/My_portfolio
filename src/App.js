@@ -329,7 +329,7 @@ const AboutSection = ({ onDownloadCV }) => {
               
               {/* New: Achievement/Highlight Section */}
               <div className="card-highlights">
-                <h4> Key Highlights</h4>
+                <h4>🏆 Key Highlights</h4>
                 <ul>
                   <li>Dean's List - 2 semesters</li>
                   <li>Published research paper in university journal</li>
