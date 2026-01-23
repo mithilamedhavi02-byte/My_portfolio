@@ -115,34 +115,6 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
   ); 
 }; 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ==================== Hero Section ==================== 
 const HeroSection = ({ onDownloadCV }) => { 
   const [displayText, setDisplayText] = useState('');
@@ -231,6 +203,16 @@ const HeroSection = ({ onDownloadCV }) => {
           <div className="profile-container"> 
             <div className="profile-card"> 
               <div className="profile-image"> 
+                {/* Your profile picture here */}
+                <img 
+                  src="/profile.jpg" 
+                  alt="Mithila Medhavi"
+                  className="profile-img"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    console.log('Profile image not found, using default design');
+                  }}
+                />
                 <div className="image-glow"></div> 
               </div> 
             </div> 
@@ -240,11 +222,6 @@ const HeroSection = ({ onDownloadCV }) => {
     </section> 
   ); 
 };
-
-
-
-
-
 
 // ==================== About Section ==================== 
 const AboutSection = ({ onDownloadCV }) => { 
@@ -263,21 +240,21 @@ const AboutSection = ({ onDownloadCV }) => {
               <h3>Software Engineering Undergraduate</h3> 
               <p> 
                 <p>
-  I am a <span className="highlight">dedicated third-year BSc (Hons) Software Engineering student</span>     
-   at the Faculty of Computing, CinEC Campus, where I am cultivating both theoretical 
-  understanding and practical development expertise. My academic progression is 
-  strategically complemented by hands-on project implementation, allowing me to 
-  transform conceptual knowledge into functional software solutions. I am actively 
-  pursuing internship opportunities to further develop my professional competencies 
-  and contribute to innovative software engineering initiatives within the industry.
-</p>
+                  I am a <span className="highlight">dedicated third-year BSc (Hons) Software Engineering student</span>     
+                  at the Faculty of Computing, CinEC Campus, where I am cultivating both theoretical 
+                  understanding and practical development expertise. My academic progression is 
+                  strategically complemented by hands-on project implementation, allowing me to 
+                  transform conceptual knowledge into functional software solutions. I am actively 
+                  pursuing internship opportunities to further develop my professional competencies 
+                  and contribute to innovative software engineering initiatives within the industry.
+                </p>
               </p> 
             </div> 
             
             <div className="about-details"> 
               <div className="detail-item"> 
                 <h4>🎯 Technical Focus</h4> 
-                <p> Modern JavaScript, Responsive Web Design, Database Systems,UI/UX desing ,MobileDevelopment</p> 
+                <p> Modern JavaScript, Responsive Web Design, Database Systems, UI/UX design, Mobile Development</p> 
               </div> 
               <div className="detail-item"> 
                 <h4>💡 Development Approach</h4> 
@@ -335,28 +312,13 @@ const AboutSection = ({ onDownloadCV }) => {
                   </div> 
                 </div> 
               </div> 
-              
-              {/* New: Achievement/Highlight Section */}
-            
             </div> 
           </div> 
         </div> 
-        
-     
       </div> 
     </section>
   );
 }; 
-
-
-
-
-
-
-
-
-
-
 
 // ==================== Skills Section ==================== 
 const SkillsSection = () => { 
@@ -366,15 +328,14 @@ const SkillsSection = () => {
     { id: 3, name: "JavaScript", image: "/icons/js.png", color: "#f7df1e" }, 
     { id: 4, name: "React", image: "/icons/react.png", color: "#61dafb" }, 
     { id: 5, name: "Node.js", image: "/icons/node.png", color: "#339933" }, 
-    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab",  }, 
+    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab" }, 
     { id: 7, name: "Android", image: "/icons/android-studio.png", color: "#3ac230"},
     { id: 8, name: "Flutter", image: "/icons/flutter.png", color: "#02569B"},
-       { id: 9, name: "MongoDB", image: "/icons/mongodb.png", color: "#47A248" },
+    { id: 9, name: "MongoDB", image: "/icons/mongodb.png", color: "#47A248" },
     { id: 10, name: "MySQL", image: "/icons/mysql.png", color: "#4479A1"},
     { id: 11, name: "Firebase", image: "/icons/firebase.png", color: "#FFCA28"},
-     { id: 13, name: "Figma", image: "/icons/figma.png", color: "#F24E1E" },
-      { id: 17, name: "GitHub", image: "/icons/github.png", color: "#181717" },
-
+    { id: 13, name: "Figma", image: "/icons/figma.png", color: "#F24E1E" },
+    { id: 17, name: "GitHub", image: "/icons/github.png", color: "#181717" },
   ]; 
 
   return ( 
@@ -385,7 +346,6 @@ const SkillsSection = () => {
             <span className="title-number">03</span> 
             Technical Skills
           </h2> 
-         
         </div> 
         <div className="skills-3d-container"> 
           <div className="skills-row"> 
@@ -410,7 +370,6 @@ const SkillsSection = () => {
                     </div> 
                   </div> 
                   <div className="hexagon-3d-back">
-                    {/* Skill Info on Hover */}
                     <div className="skill-hover-info">
                       <h4 className="skill-hover-name">{skill.name}</h4>
                       <span className="skill-hover-level">{skill.level}</span>
@@ -421,110 +380,92 @@ const SkillsSection = () => {
             ))} 
           </div> 
         </div>
-        
-        {/* Skill Legend */}
-     
       </div>
     </section> 
   ); 
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 // ==================== Projects Section ==================== 
 const ProjectsSection = () => { 
   const projects = [ 
-  
-  { 
-    id: 1, 
-    title: "Eventry-Ticket-Booking", 
-    description: "Productivity application with real-time collaboration", 
-    tech: ['React', 'Firebase', 'Material UI'], 
-    githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-    liveDemoUrl: "#", 
-    image: "/images/eventry.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "Eventry Ticket Booking System",
-    featured: false 
-  }, 
-  { 
-    id: 2, 
-    title: "Suwa Sevana Health Care App", 
-    description: "Productivity application with real-time collaboration", 
-    tech: ['React', 'Firebase', 'Material UI'], 
-    githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-    liveDemoUrl: "#", 
-    image: "/images/eventry.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "Suwa Sevana Health Care Application",
-    featured: false 
-  }, 
- 
-  {
-    id: 3,
-    title: "Smart Parking Mobile System",
-    description: "Mobile application for smart parking management with real-time slot availability, reservation system, and digital payment integration. Developed as a 3rd year group project.",
-    tech: ['Flutter', 'Dart', 'Google Maps API', 'Firebase'],
-    githubUrl: "#", // ඔබගේ GitHub URL එක
-    liveDemoUrl: "#",
-    image: "/images/parking-system.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "Smart Parking Mobile System",
-    featured: false
-  },
-  {
-    id: 4,
-    title: "Computer Repair Shop Management System",
-    description: "Desktop application for managing computer repair shop operations including customer management, repair tracking, inventory management, and billing.",
-    tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
-    githubUrl: "#", // ඔබගේ GitHub URL එක
-    liveDemoUrl: "#",
-    image: "/images/computer-repair.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "Computer Repair Shop Management System",
-    featured: false
-  },
-  {
-    id: 5,
-    title: "Hotel Management System",
-    description: "A complete hotel management solution for room booking, guest management, billing, and inventory control. Features include reservation system and reporting dashboard.",
-    tech: ['Java', 'Swing', 'MySQL', 'JDBC'],
-    githubUrl: "#", // ඔබගේ GitHub URL එක
-    liveDemoUrl: "#",
-    image: "/images/hotel-management.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "Hotel Management System",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "Class Attendance Management System (CAMS)",
-    description: "A database-focused system to record, monitor, and manage student attendance over a 10-week period. Provides separate interfaces for students and lecturers.",
-    tech: ['MySQL', 'JavaScript', 'HTML/CSS'],
-    githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements",
-    liveDemoUrl: "#",
-    image: "/images/car.jpg",   
-    imageAlt: "Class Attendance Management System Dashboard",
-    featured: false
-  },
-  {
-    id: 7,
-    title: "AURORA CEYLON",
-    description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
-    liveDemoUrl: "#",
-    image: "/images/aurora.jpg", // ඔබගේ image එකක් තිබේනම්
-    imageAlt: "AURORA CEYLON Jewellery Website",
-    featured: false
-  }
-];
-  
+    { 
+      id: 1, 
+      title: "Eventry-Ticket-Booking", 
+      description: "Productivity application with real-time collaboration", 
+      tech: ['React', 'Firebase', 'Material UI'], 
+      githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
+      liveDemoUrl: "#", 
+      image: "/images/eventry.jpg",
+      imageAlt: "Eventry Ticket Booking System",
+      featured: false 
+    }, 
+    { 
+      id: 2, 
+      title: "Suwa Sevana Health Care App", 
+      description: "Productivity application with real-time collaboration", 
+      tech: ['React', 'Firebase', 'Material UI'], 
+      githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
+      liveDemoUrl: "#", 
+      image: "/images/eventry.jpg",
+      imageAlt: "Suwa Sevana Health Care Application",
+      featured: false 
+    }, 
+    {
+      id: 3,
+      title: "Smart Parking Mobile System",
+      description: "Mobile application for smart parking management with real-time slot availability, reservation system, and digital payment integration. Developed as a 3rd year group project.",
+      tech: ['Flutter', 'Dart', 'Google Maps API', 'Firebase'],
+      githubUrl: "#",
+      liveDemoUrl: "#",
+      image: "/images/parking-system.jpg",
+      imageAlt: "Smart Parking Mobile System",
+      featured: false
+    },
+    {
+      id: 4,
+      title: "Computer Repair Shop Management System",
+      description: "Desktop application for managing computer repair shop operations including customer management, repair tracking, inventory management, and billing.",
+      tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
+      githubUrl: "#",
+      liveDemoUrl: "#",
+      image: "/images/computer-repair.jpg",
+      imageAlt: "Computer Repair Shop Management System",
+      featured: false
+    },
+    {
+      id: 5,
+      title: "Hotel Management System",
+      description: "A complete hotel management solution for room booking, guest management, billing, and inventory control. Features include reservation system and reporting dashboard.",
+      tech: ['Java', 'Swing', 'MySQL', 'JDBC'],
+      githubUrl: "#",
+      liveDemoUrl: "#",
+      image: "/images/hotel-management.jpg",
+      imageAlt: "Hotel Management System",
+      featured: false
+    },
+    {
+      id: 6,
+      title: "Class Attendance Management System (CAMS)",
+      description: "A database-focused system to record, monitor, and manage student attendance over a 10-week period. Provides separate interfaces for students and lecturers.",
+      tech: ['MySQL', 'JavaScript', 'HTML/CSS'],
+      githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements",
+      liveDemoUrl: "#",
+      image: "/images/car.jpg",   
+      imageAlt: "Class Attendance Management System Dashboard",
+      featured: false
+    },
+    {
+      id: 7,
+      title: "AURORA CEYLON",
+      description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
+      liveDemoUrl: "#",
+      image: "/images/aurora.jpg",
+      imageAlt: "AURORA CEYLON Jewellery Website",
+      featured: false
+    }
+  ];
 
   return ( 
     <section id="projects" className="projects"> 
@@ -586,21 +527,10 @@ const ProjectsSection = () => {
   ); 
 }; 
 
-
-
-
-
-   
-
 // ==================== Contact Section ==================== 
-
-
-const ContactSection = ({
-  onChange,  // ඔබට onChange විතරක් ඕන, එක parent එකෙන් pass වෙනවා
-}) => {
+const ContactSection = ({ onChange }) => {
   const formRef = useRef();
   
-  // Local form state
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -610,7 +540,6 @@ const ContactSection = ({
   const [formLoading, setFormLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ==================== ANIMATION VARIANTS ====================
   const formVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -649,7 +578,6 @@ const ContactSection = ({
     }),
   };
 
-  // ==================== FORM CHANGE HANDLER ====================
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm(prev => ({
@@ -657,17 +585,14 @@ const ContactSection = ({
       [name]: value
     }));
     
-    // Parent onChange call කරන්න (ඇත්නම්)
     if (onChange) {
       onChange(e);
     }
   };
 
-  // ==================== SUBMIT HANDLER (EMAILJS) ====================
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Form validation
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       alert('Please fill all fields');
       return;
@@ -677,12 +602,12 @@ const ContactSection = ({
 
     emailjs
       .send(
-        "service_f0ysn3b",           // ✅ ඔබගේ Service ID
-        "template_gq0ya4m",          // ✅ ඔබගේ Template ID
+        "service_f0ysn3b",
+        "template_gq0ya4m",
         {
-          name: form.name,           // ✅ Template එකේ {{name}} සඳහා
-          email: form.email,         // ✅ Template එකේ {{email}} සඳහා
-          message: form.message,     // ✅ Template එකේ {{message}} සඳහා
+          name: form.name,
+          email: form.email,
+          message: form.message,
           date: new Date().toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -696,7 +621,7 @@ const ContactSection = ({
           to_email: 'mithilamedhavi02@gmail.com',
           reply_to: form.email
         },
-        "wMurm0u3DfTAJ1lEV"          // ✅ ඔබගේ Public Key
+        "wMurm0u3DfTAJ1lEV"
       )
       .then(
         (response) => {
@@ -705,14 +630,12 @@ const ContactSection = ({
           setIsSubmitted(true);
           setFormLoading(false);
           
-          // Form reset කරන්න
           setForm({ 
             name: "", 
             email: "", 
             message: "" 
           });
 
-          // Success message auto hide
           setTimeout(() => {
             setIsSubmitted(false);
           }, 4000);
@@ -725,7 +648,6 @@ const ContactSection = ({
       );
   };
 
-  // ==================== JSX ====================
   return (
     <section id="contact" className="contact-simple">
       <div className="container">
@@ -741,7 +663,6 @@ const ContactSection = ({
         </motion.div>
 
         <div className="contact-container">
-          {/* LEFT COLUMN - CONTACT INFO */}
           <motion.div
             className="contact-left-column"
             initial={{ opacity: 0, x: -50 }}
@@ -755,7 +676,6 @@ const ContactSection = ({
               </div>
               
               <div className="contact-info-content">
-                {/* Phone */}
                 <motion.div 
                   className="contact-info-item"
                   custom={0}
@@ -773,7 +693,6 @@ const ContactSection = ({
                   </div>
                 </motion.div>
 
-                {/* Email */}
                 <motion.div 
                   className="contact-info-item"
                   custom={1}
@@ -791,7 +710,6 @@ const ContactSection = ({
                   </div>
                 </motion.div>
 
-                {/* Location */}
                 <motion.div 
                   className="contact-info-item"
                   custom={2}
@@ -809,7 +727,6 @@ const ContactSection = ({
                   </div>
                 </motion.div>
 
-                {/* Social Media */}
                 <motion.div 
                   className="contact-info-item"
                   custom={3}
@@ -847,7 +764,6 @@ const ContactSection = ({
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN - CONTACT FORM */}
           <motion.div
             className="contact-right-column"
             variants={formVariants}
@@ -887,7 +803,6 @@ const ContactSection = ({
                 onSubmit={handleSubmit}
                 className="contact-simple-form"
               >
-                {/* Name Input */}
                 <motion.div 
                   className="form-group-simple"
                   custom={0}
@@ -911,7 +826,6 @@ const ContactSection = ({
                   />
                 </motion.div>
 
-                {/* Email Input */}
                 <motion.div 
                   className="form-group-simple"
                   custom={1}
@@ -935,7 +849,6 @@ const ContactSection = ({
                   />
                 </motion.div>
 
-                {/* Message Textarea */}
                 <motion.div 
                   className="form-group-simple"
                   custom={2}
@@ -959,7 +872,6 @@ const ContactSection = ({
                   />
                 </motion.div>
 
-                {/* Submit Button */}
                 <motion.div 
                   custom={3}
                   variants={inputVariants}
@@ -990,31 +902,6 @@ const ContactSection = ({
     </section>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ==================== Footer Component ==================== 
 const Footer = () => { 
