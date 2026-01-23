@@ -114,6 +114,34 @@ const Navigation = ({ activeSection, isMenuOpen, onNavClick, onMenuToggle, onDow
   ); 
 }; 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ==================== Hero Section ==================== 
 const HeroSection = ({ onDownloadCV }) => { 
   const [displayText, setDisplayText] = useState('');
@@ -188,11 +216,9 @@ const HeroSection = ({ onDownloadCV }) => {
             </span>
           </h1> 
           <div className="hero-subtitle"> 
-            <span className="subtitle-text">Frontend Developer</span> 
+            <span className="subtitle-text">Software Engineer Undergraduate</span> 
           </div> 
-          <p className="hero-description"> 
-            I craft <span className="highlight-word">digital experiences</span> that blend beautiful design with seamless functionality. Specializing in <span className="tech-stack"> React, JavaScript,</span> and modern web technologies. 
-          </p> 
+         
           <div className="hero-buttons"> 
             <button className="btn btn-download" onClick={onDownloadCV}> 
               <span className="btn-icon">📥</span> 
@@ -214,6 +240,11 @@ const HeroSection = ({ onDownloadCV }) => {
   ); 
 };
 
+
+
+
+
+
 // ==================== About Section ==================== 
 const AboutSection = ({ onDownloadCV }) => { 
   return ( 
@@ -228,17 +259,24 @@ const AboutSection = ({ onDownloadCV }) => {
         <div className="about-content"> 
           <div className="about-text"> 
             <div className="about-intro"> 
-              <h3>Software Engineering Graduate</h3> 
+              <h3>Software Engineering Undergraduate</h3> 
               <p> 
-                A passionate and dedicated <span className="highlight">Computer Science graduate</span> with strong foundation in software development. 
-                Eager to apply academic knowledge and project experience to real-world challenges in the tech industry.
+                <p>
+  I am a <span className="highlight">dedicated third-year BSc (Hons) Software Engineering student</span>     
+   at the Faculty of Computing, CinEC Campus, where I am cultivating both theoretical 
+  understanding and practical development expertise. My academic progression is 
+  strategically complemented by hands-on project implementation, allowing me to 
+  transform conceptual knowledge into functional software solutions. I am actively 
+  pursuing internship opportunities to further develop my professional competencies 
+  and contribute to innovative software engineering initiatives within the industry.
+</p>
               </p> 
             </div> 
             
             <div className="about-details"> 
               <div className="detail-item"> 
                 <h4>🎯 Technical Focus</h4> 
-                <p>Full-Stack Development (MERN), Modern JavaScript, Responsive Web Design, Database Systems</p> 
+                <p> Modern JavaScript, Responsive Web Design, Database Systems,UI/UX desing ,MobileDevelopment</p> 
               </div> 
               <div className="detail-item"> 
                 <h4>💡 Development Approach</h4> 
@@ -249,36 +287,6 @@ const AboutSection = ({ onDownloadCV }) => {
                 <p>To contribute to innovative projects and grow as a professional software engineer</p> 
               </div> 
             </div> 
-            
-            {/* New: Portfolio Projects Preview */}
-            <div className="projects-preview">
-              <h4>🎓 Academic & Personal Projects</h4>
-              <div className="project-tags">
-                <span className="project-tag">University Management System</span>
-                <span className="project-tag">E-Commerce Website</span>
-                <span className="project-tag">Mobile App Development</span>
-                <span className="project-tag">Final Year Project</span>
-              </div>
-            </div>
-            
-            {/* Skills Section - Updated for Fresh Graduate */}
-            <div className="skills-preview">
-              <h4>🛠️ Technical Skills</h4>
-              <div className="skills-categories">
-                <div className="skill-category">
-                  <h5>Frontend</h5>
-                  <p>React.js, JavaScript (ES6+), HTML5, CSS3, Bootstrap</p>
-                </div>
-                <div className="skill-category">
-                  <h5>Backend</h5>
-                  <p>Node.js, Express.js, REST APIs, MongoDB, MySQL</p>
-                </div>
-                <div className="skill-category">
-                  <h5>Tools & Others</h5>
-                  <p>Git/GitHub, Postman, VS Code, Agile/Scrum, Figma (Basic)</p>
-                </div>
-              </div>
-            </div>
           </div> 
           
           <div className="about-visual"> 
@@ -341,20 +349,21 @@ const AboutSection = ({ onDownloadCV }) => {
           </div> 
         </div> 
         
-        {/* New: Call to Action for Fresh Graduate */}
-        <div className="about-cta">
-       
-          <a href="#projects" className="btn btn-secondary">
-            View My Projects
-          </a>
-          <a href="#contact" className="btn btn-outline">
-            Contact Me
-          </a>
-        </div>
+     
       </div> 
     </section>
   );
 }; 
+
+
+
+
+
+
+
+
+
+
 
 // ==================== Skills Section ==================== 
 const SkillsSection = () => { 
