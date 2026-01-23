@@ -590,239 +590,424 @@ const ProjectsSection = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// App.js එකේම ContactSection component එක තියෙනවනම්:
+   
 
 // ==================== Contact Section ==================== 
-const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) => { 
-  const formRef = useRef(); // useRef already exists in App.js imports
-  const [localLoading, setLocalLoading] = useState(false);
-  const [localSubmitted, setLocalSubmitted] = useState(false);
+
+
+const ContactSection = ({
+  onChange,  // ඔබට onChange විතරක් ඕන, එක parent එකෙන් pass වෙනවා
+}) => {
+  const formRef = useRef();
   
-  // EmailJS send function
-  const sendEmail = async (e) => {
-    e.preventDefault();
-    setLocalLoading(true);
+  // Local form state
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  
+  const [formLoading, setFormLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // ==================== ANIMATION VARIANTS ====================
+  const formVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.4,
+      },
+    }),
+  };
+
+  const contactInfoVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1 + 0.3,
+        duration: 0.4,
+      },
+    }),
+  };
+
+  // ==================== FORM CHANGE HANDLER ====================
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
     
-    try {
-      // 🔴 ඔබගේ EmailJS IDs මේකට දාන්න:
-      const serviceID = 'YOUR_SERVICE_ID';
-      const templateID = 'YOUR_TEMPLATE_ID';  
-      const publicKey = 'YOUR_PUBLIC_KEY';
-      
-      // EmailJS එකට data send කරනවා
-      const result = await emailjs.send(
-        serviceID,
-        templateID,
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          to_email: 'mithilamedhavi02@gmail.com',
-          reply_to: form.email
-        },
-        publicKey
-      );
-      
-      console.log('Email sent successfully:', result.text);
-      setLocalSubmitted(true);
-      
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setLocalSubmitted(false);
-      }, 3000);
-      
-    } catch (error) {
-      console.error('Email send failed:', error);
-      alert(`Message sending failed. Error: ${error.text || error.message}`);
-    } finally {
-      setLocalLoading(false);
+    // Parent onChange call කරන්න (ඇත්නම්)
+    if (onChange) {
+      onChange(e);
     }
   };
 
-  const isLoading = formLoading || localLoading;
-  const isSuccess = isSubmitted || localSubmitted;
+  // ==================== SUBMIT HANDLER (EMAILJS) ====================
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Form validation
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      alert('Please fill all fields');
+      return;
+    }
+    
+    setFormLoading(true);
 
-  return ( 
-    <section id="contact" className="contact-simple"> 
-      <div className="container"> 
-        <motion.div 
+    emailjs
+      .send(
+        "service_f0ysn3b",           // ✅ ඔබගේ Service ID
+        "template_gq0ya4m",          // ✅ ඔබගේ Template ID
+        {
+          name: form.name,           // ✅ Template එකේ {{name}} සඳහා
+          email: form.email,         // ✅ Template එකේ {{email}} සඳහා
+          message: form.message,     // ✅ Template එකේ {{message}} සඳහා
+          date: new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }),
+          time: new Date().toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          }),
+          to_email: 'mithilamedhavi02@gmail.com',
+          reply_to: form.email
+        },
+        "wMurm0u3DfTAJ1lEV"          // ✅ ඔබගේ Public Key
+      )
+      .then(
+        (response) => {
+          console.log('✅ Email sent successfully:', response.text);
+          
+          setIsSubmitted(true);
+          setFormLoading(false);
+          
+          // Form reset කරන්න
+          setForm({ 
+            name: "", 
+            email: "", 
+            message: "" 
+          });
+
+          // Success message auto hide
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 4000);
+        },
+        (error) => {
+          console.error('❌ EmailJS Error:', error);
+          alert('Sorry, failed to send message. Please try again or email me directly at mithilamedhavi02@gmail.com');
+          setFormLoading(false);
+        }
+      );
+  };
+
+  // ==================== JSX ====================
+  return (
+    <section id="contact" className="contact-simple">
+      <div className="container">
+        <motion.div
           className="contact-simple-header"
           initial={{ y: -30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-        > 
-          <h2 className="contact-simple-subtitle">GET IN TOUCH</h2> 
-          <h1 className="contact-simple-title">Contact Me</h1> 
-        </motion.div> 
+        >
+          <h2 className="contact-simple-subtitle">GET IN TOUCH</h2>
+          <h1 className="contact-simple-title">Contact Me</h1>
+        </motion.div>
 
-        <div className="contact-container"> 
-          {/* Contact Info Column - Same as before */}
-          <motion.div 
+        <div className="contact-container">
+          {/* LEFT COLUMN - CONTACT INFO */}
+          <motion.div
             className="contact-left-column"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-          > 
-            {/* ... Same contact info content ... */}
-          </motion.div> 
+          >
+            <div className="contact-info-card">
+              <div className="contact-info-header">
+                <h3>Contact Information</h3>
+              </div>
+              
+              <div className="contact-info-content">
+                {/* Phone */}
+                <motion.div 
+                  className="contact-info-item"
+                  custom={0}
+                  variants={contactInfoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <div className="contact-info-icon">
+                    <span role="img" aria-label="phone">📱</span>
+                  </div>
+                  <div className="contact-info-details">
+                    <h4>Phone</h4>
+                    <p>+94 767100617</p>
+                  </div>
+                </motion.div>
 
-          {/* Contact Form Column */}
-          <motion.div 
+                {/* Email */}
+                <motion.div 
+                  className="contact-info-item"
+                  custom={1}
+                  variants={contactInfoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <div className="contact-info-icon">
+                    <span role="img" aria-label="email">📧</span>
+                  </div>
+                  <div className="contact-info-details">
+                    <h4>Email</h4>
+                    <p>mithilamedhavi02@gmail.com</p>
+                  </div>
+                </motion.div>
+
+                {/* Location */}
+                <motion.div 
+                  className="contact-info-item"
+                  custom={2}
+                  variants={contactInfoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <div className="contact-info-icon">
+                    <span role="img" aria-label="address">📍</span>
+                  </div>
+                  <div className="contact-info-details">
+                    <h4>Location</h4>
+                    <p>3/C Palugama, Dompe</p>
+                  </div>
+                </motion.div>
+
+                {/* Social Media */}
+                <motion.div 
+                  className="contact-info-item"
+                  custom={3}
+                  variants={contactInfoVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <div className="contact-info-icon">
+                    <span role="img" aria-label="social">💼</span>
+                  </div>
+                  <div className="contact-info-details">
+                    <h4>Social Media</h4>
+                    <div className="social-links">
+                      <a 
+                        href="https://www.linkedin.com/in/mithila-medhavi-17a615296/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="social-link"
+                      >
+                        LinkedIn
+                      </a>
+                      <a 
+                        href="https://github.com/mithilamedhavi02-byte" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="social-link"
+                      >
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT COLUMN - CONTACT FORM */}
+          <motion.div
             className="contact-right-column"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={formVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          > 
-            <div className="contact-simple-form-card"> 
+          >
+            <div className="contact-simple-form-card">
               <h3 className="form-title">Send Me a Message</h3>
               <p className="form-description">
                 Have a project in mind or want to collaborate? Feel free to reach out!
               </p>
               
-              <AnimatePresence> 
-                {isSuccess && ( 
-                  <motion.div 
+              <AnimatePresence>
+                {isSubmitted && (
+                  <motion.div
                     className="success-message-simple"
                     initial={{ opacity: 0, y: -20, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 200 }}
-                  > 
+                  >
                     <motion.span 
                       className="success-icon-simple"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 0.5 }}
-                    > 
+                    >
                       ✅ 
-                    </motion.span> 
-                    <span>Thank you! Your message has been sent successfully.</span> 
-                  </motion.div> 
-                )} 
-              </AnimatePresence> 
+                    </motion.span>
+                    <span>Thank you! Your message has been sent successfully.</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <form 
-                ref={formRef}
-                onSubmit={sendEmail}
+                ref={formRef} 
+                onSubmit={handleSubmit}
                 className="contact-simple-form"
-              > 
-                {/* Form fields - Same as before */}
+              >
+                {/* Name Input */}
                 <motion.div 
                   className="form-group-simple"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={0}
+                  variants={inputVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.1, duration: 0.4 }}
-                > 
-                  <label htmlFor="name" className="form-label-simple"> 
-                    Your Name 
-                  </label> 
-                  <input 
+                >
+                  <label htmlFor="name" className="form-label-simple">
+                    Your Name
+                  </label>
+                  <input
                     type="text"
                     id="name"
                     name="name"
                     value={form.name}
-                    onChange={onChange}
+                    onChange={handleChange}
                     className="form-input-simple"
                     placeholder="What's your name?"
-                    required 
-                  /> 
-                </motion.div> 
+                    required
+                  />
+                </motion.div>
 
+                {/* Email Input */}
                 <motion.div 
                   className="form-group-simple"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={1}
+                  variants={inputVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                > 
-                  <label htmlFor="email" className="form-label-simple"> 
-                    Your Email 
-                  </label> 
-                  <input 
+                >
+                  <label htmlFor="email" className="form-label-simple">
+                    Your Email
+                  </label>
+                  <input
                     type="email"
                     id="email"
                     name="email"
                     value={form.email}
-                    onChange={onChange}
+                    onChange={handleChange}
                     className="form-input-simple"
                     placeholder="What's your email?"
-                    required 
-                  /> 
-                </motion.div> 
+                    required
+                  />
+                </motion.div>
 
+                {/* Message Textarea */}
                 <motion.div 
                   className="form-group-simple"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={2}
+                  variants={inputVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                > 
-                  <label htmlFor="message" className="form-label-simple"> 
-                    Your Message 
-                  </label> 
-                  <textarea 
+                >
+                  <label htmlFor="message" className="form-label-simple">
+                    Your Message
+                  </label>
+                  <textarea
                     id="message"
                     name="message"
                     value={form.message}
-                    onChange={onChange}
+                    onChange={handleChange}
                     className="form-textarea-simple"
                     rows="5"
                     placeholder="What do you want to say?"
-                    required 
-                  /> 
-                </motion.div> 
+                    required
+                  />
+                </motion.div>
 
+                {/* Submit Button */}
                 <motion.div 
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={3}
+                  variants={inputVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                > 
+                >
                   <button 
-                    type="submit"
-                    className={`submit-btn-simple ${isLoading ? 'loading' : ''}`}
-                    disabled={isLoading}
-                  > 
-                    {isLoading ? ( 
-                      <> 
-                        <span className="loading-spinner-simple"></span> 
-                        Sending... 
-                      </> 
-                    ) : ( 
+                    type="submit" 
+                    className={`submit-btn-simple ${formLoading ? 'loading' : ''}`}
+                    disabled={formLoading}
+                  >
+                    {formLoading ? (
+                      <>
+                        <span className="loading-spinner-simple"></span>
+                        Sending...
+                      </>
+                    ) : (
                       'Send Message'
-                    )} 
-                  </button> 
-                </motion.div> 
-              </form> 
-            </div> 
-          </motion.div> 
-        </div> 
-      </div> 
-    </section> 
-  ); 
-}; 
+                    )}
+                  </button>
+                </motion.div>
+              </form>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
