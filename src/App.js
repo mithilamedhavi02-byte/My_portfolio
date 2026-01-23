@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css'; 
 import jsPDF from 'jspdf'; 
 import { motion, AnimatePresence } from 'framer-motion'; 
+import emailjs from '@emailjs/browser';
 
 // ==================== Loading Screen Component ==================== 
 const LoadingScreen = ({ isLoading }) => { 
@@ -336,15 +337,7 @@ const AboutSection = ({ onDownloadCV }) => {
               </div> 
               
               {/* New: Achievement/Highlight Section */}
-              <div className="card-highlights">
-                <h4>🏆 Key Highlights</h4>
-                <ul>
-                  <li>Dean's List - 2 semesters</li>
-                  <li>Published research paper in university journal</li>
-                  <li>Completed 5+ academic software projects</li>
-                  <li>Active GitHub portfolio with code samples</li>
-                </ul>
-              </div>
+            
             </div> 
           </div> 
         </div> 
@@ -372,8 +365,16 @@ const SkillsSection = () => {
     { id: 2, name: "CSS", image: "/icons/css.png", color: "#1572b6" }, 
     { id: 3, name: "JavaScript", image: "/icons/js.png", color: "#f7df1e" }, 
     { id: 4, name: "React", image: "/icons/react.png", color: "#61dafb" }, 
-    { id: 5, name: "Node", image: "/icons/node.png", color: "#339933" }, 
-    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab" }, 
+    { id: 5, name: "Node.js", image: "/icons/node.png", color: "#339933" }, 
+    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab",  }, 
+    { id: 7, name: "Android", image: "/icons/android-studio.png", color: "#3ac230"},
+    { id: 8, name: "Flutter", image: "/icons/flutter.png", color: "#02569B"},
+       { id: 9, name: "MongoDB", image: "/icons/mongodb.png", color: "#47A248" },
+    { id: 10, name: "MySQL", image: "/icons/mysql.png", color: "#4479A1"},
+    { id: 11, name: "Firebase", image: "/icons/firebase.png", color: "#FFCA28"},
+     { id: 13, name: "Figma", image: "/icons/figma.png", color: "#F24E1E" },
+      { id: 17, name: "GitHub", image: "/icons/github.png", color: "#181717" },
+
   ]; 
 
   return ( 
@@ -381,10 +382,10 @@ const SkillsSection = () => {
       <div className="container">
         <div className="section-header"> 
           <h2 className="section-title"> 
-            <span className="title-number"></span> 
-            My Tech Stack
+            <span className="title-number">03</span> 
+            Technical Skills
           </h2> 
-          <p className="section-subtitle">Skills in One Row</p> 
+         
         </div> 
         <div className="skills-3d-container"> 
           <div className="skills-row"> 
@@ -408,48 +409,122 @@ const SkillsSection = () => {
                       /> 
                     </div> 
                   </div> 
-                  <div className="hexagon-3d-back"></div> 
-                </div> 
+                  <div className="hexagon-3d-back">
+                    {/* Skill Info on Hover */}
+                    <div className="skill-hover-info">
+                      <h4 className="skill-hover-name">{skill.name}</h4>
+                      <span className="skill-hover-level">{skill.level}</span>
+                    </div>
+                  </div> 
+                </div>
               </div> 
             ))} 
           </div> 
-        </div> 
+        </div>
+        
+        {/* Skill Legend */}
+     
       </div>
     </section> 
   ); 
-}; 
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ==================== Projects Section ==================== 
 const ProjectsSection = () => { 
   const projects = [ 
-    { 
-      id: 3, 
-      title: "Class Attendance Management System (CAMS)", 
-      description: "A database-focused system to record, monitor, and manage student attendance over a 10-week period. Provides separate interfaces for students and lecturers.", 
-      tech: ['MySQL', 'JavaScript', 'HTML/CSS'], 
-      githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements", 
-      liveDemoUrl: "#", 
-      featured: false 
-    },
-    { 
-      id: 4, 
-      title: "Eventry-Ticket-Booking", 
-      description: "Productivity application with real-time collaboration", 
-      tech: ['React', 'Firebase', 'Material UI'], 
-      githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-      liveDemoUrl: "#", 
-      featured: false 
-    }, 
-    {
-      id: 5,
-      title: "AURORA CEYLON",
-      description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
-      tech: ['HTML', 'CSS', 'JavaScript'],
-      githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
-      liveDemoUrl: "#",
-      featured: false
-    }
-  ]; 
+  
+  { 
+    id: 1, 
+    title: "Eventry-Ticket-Booking", 
+    description: "Productivity application with real-time collaboration", 
+    tech: ['React', 'Firebase', 'Material UI'], 
+    githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
+    liveDemoUrl: "#", 
+    image: "/images/eventry.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "Eventry Ticket Booking System",
+    featured: false 
+  }, 
+  { 
+    id: 2, 
+    title: "Suwa Sevana Health Care App", 
+    description: "Productivity application with real-time collaboration", 
+    tech: ['React', 'Firebase', 'Material UI'], 
+    githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
+    liveDemoUrl: "#", 
+    image: "/images/eventry.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "Suwa Sevana Health Care Application",
+    featured: false 
+  }, 
+ 
+  {
+    id: 3,
+    title: "Smart Parking Mobile System",
+    description: "Mobile application for smart parking management with real-time slot availability, reservation system, and digital payment integration. Developed as a 3rd year group project.",
+    tech: ['Flutter', 'Dart', 'Google Maps API', 'Firebase'],
+    githubUrl: "#", // ඔබගේ GitHub URL එක
+    liveDemoUrl: "#",
+    image: "/images/parking-system.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "Smart Parking Mobile System",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Computer Repair Shop Management System",
+    description: "Desktop application for managing computer repair shop operations including customer management, repair tracking, inventory management, and billing.",
+    tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
+    githubUrl: "#", // ඔබගේ GitHub URL එක
+    liveDemoUrl: "#",
+    image: "/images/computer-repair.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "Computer Repair Shop Management System",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Hotel Management System",
+    description: "A complete hotel management solution for room booking, guest management, billing, and inventory control. Features include reservation system and reporting dashboard.",
+    tech: ['Java', 'Swing', 'MySQL', 'JDBC'],
+    githubUrl: "#", // ඔබගේ GitHub URL එක
+    liveDemoUrl: "#",
+    image: "/images/hotel-management.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "Hotel Management System",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Class Attendance Management System (CAMS)",
+    description: "A database-focused system to record, monitor, and manage student attendance over a 10-week period. Provides separate interfaces for students and lecturers.",
+    tech: ['MySQL', 'JavaScript', 'HTML/CSS'],
+    githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements",
+    liveDemoUrl: "#",
+    image: "/images/car.jpg",   
+    imageAlt: "Class Attendance Management System Dashboard",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "AURORA CEYLON",
+    description: "A modern handmade jewellery website featuring elegant UI design, smooth animations, and interactive user experiences. Built to showcase jewellery collections with a clean layout and dynamic visual effects.",
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
+    liveDemoUrl: "#",
+    image: "/images/aurora.jpg", // ඔබගේ image එකක් තිබේනම්
+    imageAlt: "AURORA CEYLON Jewellery Website",
+    featured: false
+  }
+];
+  
 
   return ( 
     <section id="projects" className="projects"> 
@@ -511,47 +586,80 @@ const ProjectsSection = () => {
   ); 
 }; 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// App.js එකේම ContactSection component එක තියෙනවනම්:
+
 // ==================== Contact Section ==================== 
 const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) => { 
-  const formRef = useRef(); 
+  const formRef = useRef(); // useRef already exists in App.js imports
+  const [localLoading, setLocalLoading] = useState(false);
+  const [localSubmitted, setLocalSubmitted] = useState(false);
   
-  const formVariants = { 
-    hidden: { opacity: 0, y: 50 }, 
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        type: "spring", 
-        stiffness: 100, 
-        damping: 15, 
-        duration: 0.6 
-      } 
-    } 
-  }; 
+  // EmailJS send function
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setLocalLoading(true);
+    
+    try {
+      // 🔴 ඔබගේ EmailJS IDs මේකට දාන්න:
+      const serviceID = 'YOUR_SERVICE_ID';
+      const templateID = 'YOUR_TEMPLATE_ID';  
+      const publicKey = 'YOUR_PUBLIC_KEY';
+      
+      // EmailJS එකට data send කරනවා
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          to_email: 'mithilamedhavi02@gmail.com',
+          reply_to: form.email
+        },
+        publicKey
+      );
+      
+      console.log('Email sent successfully:', result.text);
+      setLocalSubmitted(true);
+      
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setLocalSubmitted(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Email send failed:', error);
+      alert(`Message sending failed. Error: ${error.text || error.message}`);
+    } finally {
+      setLocalLoading(false);
+    }
+  };
 
-  const inputVariants = { 
-    hidden: { opacity: 0, x: 20 }, 
-    visible: (i) => ({ 
-      opacity: 1, 
-      x: 0, 
-      transition: { 
-        delay: i * 0.1, 
-        duration: 0.4 
-      } 
-    }) 
-  }; 
-
-  const contactInfoVariants = { 
-    hidden: { opacity: 0, x: -20 }, 
-    visible: (i) => ({ 
-      opacity: 1, 
-      x: 0, 
-      transition: { 
-        delay: i * 0.1 + 0.3,
-        duration: 0.4 
-      } 
-    }) 
-  }; 
+  const isLoading = formLoading || localLoading;
+  const isSuccess = isSubmitted || localSubmitted;
 
   return ( 
     <section id="contact" className="contact-simple"> 
@@ -568,6 +676,7 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
         </motion.div> 
 
         <div className="contact-container"> 
+          {/* Contact Info Column - Same as before */}
           <motion.div 
             className="contact-left-column"
             initial={{ opacity: 0, x: -50 }}
@@ -575,106 +684,16 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           > 
-            <div className="contact-info-card">
-              <div className="contact-info-header">
-                <h3>Contact Information</h3>
-              </div>
-              
-              <div className="contact-info-content">
-                <motion.div 
-                  className="contact-info-item"
-                  custom={0}
-                  variants={contactInfoVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  <div className="contact-info-icon">
-                    <span role="img" aria-label="phone">📱</span>
-                  </div>
-                  <div className="contact-info-details">
-                    <h4>Phone</h4>
-                    <p>+94 767100617</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="contact-info-item"
-                  custom={1}
-                  variants={contactInfoVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  <div className="contact-info-icon">
-                    <span role="img" aria-label="email">📧</span>
-                  </div>
-                  <div className="contact-info-details">
-                    <h4>Email</h4>
-                    <p>mithilamedhavi02@gmail.com</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="contact-info-item"
-                  custom={2}
-                  variants={contactInfoVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  <div className="contact-info-icon">
-                    <span role="img" aria-label="address">📍</span>
-                  </div>
-                  <div className="contact-info-details">
-                    <h4>Location</h4>
-                    <p>3/C Palugama, Dompe</p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="contact-info-item"
-                  custom={3}
-                  variants={contactInfoVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  <div className="contact-info-icon">
-                    <span role="img" aria-label="social">💼</span>
-                  </div>
-                  <div className="contact-info-details">
-                    <h4>Social Media</h4>
-                    <div className="social-links">
-                      <a 
-                        href="https://www.linkedin.com/in/mithila-medhavi-17a615296/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="social-link"
-                      >
-                        LinkedIn
-                      </a>
-                      <a 
-                        href="https://github.com/mithilamedhavi02-byte" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="social-link"
-                      >
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
+            {/* ... Same contact info content ... */}
           </motion.div> 
 
+          {/* Contact Form Column */}
           <motion.div 
             className="contact-right-column"
-            variants={formVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
           > 
             <div className="contact-simple-form-card"> 
               <h3 className="form-title">Send Me a Message</h3>
@@ -683,7 +702,7 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
               </p>
               
               <AnimatePresence> 
-                {isSubmitted && ( 
+                {isSuccess && ( 
                   <motion.div 
                     className="success-message-simple"
                     initial={{ opacity: 0, y: -20, scale: 0.9 }}
@@ -705,16 +724,16 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
 
               <form 
                 ref={formRef}
-                onSubmit={onSubmit}
+                onSubmit={sendEmail}
                 className="contact-simple-form"
               > 
+                {/* Form fields - Same as before */}
                 <motion.div 
                   className="form-group-simple"
-                  custom={0}
-                  variants={inputVariants}
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
                 > 
                   <label htmlFor="name" className="form-label-simple"> 
                     Your Name 
@@ -733,11 +752,10 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
 
                 <motion.div 
                   className="form-group-simple"
-                  custom={1}
-                  variants={inputVariants}
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
                 > 
                   <label htmlFor="email" className="form-label-simple"> 
                     Your Email 
@@ -756,11 +774,10 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
 
                 <motion.div 
                   className="form-group-simple"
-                  custom={2}
-                  variants={inputVariants}
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
                 > 
                   <label htmlFor="message" className="form-label-simple"> 
                     Your Message 
@@ -778,18 +795,17 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
                 </motion.div> 
 
                 <motion.div 
-                  custom={3}
-                  variants={inputVariants}
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
                 > 
                   <button 
                     type="submit"
-                    className={`submit-btn-simple ${formLoading ? 'loading' : ''}`}
-                    disabled={formLoading}
+                    className={`submit-btn-simple ${isLoading ? 'loading' : ''}`}
+                    disabled={isLoading}
                   > 
-                    {formLoading ? ( 
+                    {isLoading ? ( 
                       <> 
                         <span className="loading-spinner-simple"></span> 
                         Sending... 
@@ -806,7 +822,14 @@ const ContactSection = ({ form, formLoading, isSubmitted, onChange, onSubmit }) 
       </div> 
     </section> 
   ); 
-};
+}; 
+
+
+
+
+
+
+
 
 // ==================== Footer Component ==================== 
 const Footer = () => { 
