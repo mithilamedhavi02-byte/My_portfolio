@@ -462,7 +462,7 @@ const ProjectsSection = () => {
       tech: ['React', 'Firebase', 'Material UI'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
       liveDemoUrl: "#", 
-      image: "/images/suwa-sevana.jpg", // Replace with your image
+      image: "/images/suwa-sevana.png", // Replace with your image
       imageAlt: "Suwa Sevana Health Care Application",
       featured: false 
     }, 
