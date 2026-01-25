@@ -261,17 +261,18 @@ const AboutSection = ({ onDownloadCV }) => {
           <div className="about-text"> 
             <div className="about-intro"> 
               <h3>Software Engineering Undergraduate</h3> 
-              <p> 
-                <p>
-  I am a <span className="highlight">dedicated third-year BSc (Hons) Software Engineering student</span>     
-   at the Faculty of Computing, CinEC Campus, where I am cultivating both theoretical 
-  understanding and practical development expertise. My academic progression is 
-  strategically complemented by hands-on project implementation, allowing me to 
-  transform conceptual knowledge into functional software solutions. I am actively 
-  pursuing internship opportunities to further develop my professional competencies 
-  and contribute to innovative software engineering initiatives within the industry.
+            <p>
+  I am a dedicated third-year{" "}
+  <span className="highlight">BSc (Hons) Software Engineering undergraduate</span>{" "}
+  at the Faculty of Computing, CINEC Campus, with a strong foundation in both
+  theoretical concepts and practical software development. My academic journey
+  is complemented by hands-on project experience, enabling me to transform
+  complex ideas into efficient, real-world software solutions. I am actively
+  seeking internship opportunities to further enhance my technical skills, gain
+  industry exposure, and contribute to innovative and impactful software
+  engineering initiatives.
 </p>
-              </p> 
+
             </div> 
             
             <div className="about-details"> 
@@ -484,7 +485,7 @@ const ProjectsSection = () => {
       tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
       githubUrl: "#",
       liveDemoUrl: "#",
-      image: "/images/computer-repair.jpg", // Replace with your image
+      image: "/images/computer-repair.png", // Replace with your image
       imageAlt: "Computer Repair Shop Management System",
       featured: false
     },
