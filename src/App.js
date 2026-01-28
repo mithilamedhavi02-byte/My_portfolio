@@ -1019,13 +1019,8 @@ const Footer = () => {
     <footer className="footer"> 
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo">
-            <span className="logo-text">Mithila Medhavi</span>
-            <span className="logo-dot"></span>
-          </div>
-          <p className="footer-copyright">
-            © {new Date().getFullYear()} All rights reserved.
-          </p>
+         
+         
         </div>
       </div>
     </footer> 
