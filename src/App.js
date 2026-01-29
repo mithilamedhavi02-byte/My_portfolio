@@ -578,7 +578,7 @@ const ProjectsSection = () => {
                 </div> 
                 <div className="project-info"> 
                   {project.featured && ( 
-                    <span className="project-badge">Featured Project</span> 
+                    <span className="project-badge">Featur Project</span> 
                   )} 
                   <h3>{project.title}</h3> 
                   <p>{project.description}</p> 
