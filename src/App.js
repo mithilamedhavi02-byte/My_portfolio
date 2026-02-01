@@ -367,7 +367,7 @@ const SkillsSection = () => {
     { id: 3, name: "JavaScript", image: "/icons/js.png", color: "#f7df1e" }, 
     { id: 4, name: "React", image: "/icons/react.png", color: "#61dafb" }, 
     { id: 5, name: "Node.js", image: "/icons/node.png", color: "#339933" }, 
-    { id: 6, name: "Python", image: "/icons/python.png", color: "#3776ab",  }, 
+     
     { id: 7, name: "Android", image: "/icons/android-studio.png", color: "#3ac230"},
     { id: 8, name: "Flutter", image: "/icons/flutter.png", color: "#02569B"},
        { id: 9, name: "MongoDB", image: "/icons/mongodb.png", color: "#47A248" },
@@ -452,7 +452,7 @@ const ProjectsSection = () => {
       tech:  ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
       liveDemoUrl: "#", 
-      image: "/images/eventry.png", // Replace with your image
+      image: "/images/eventry.png",
       imageAlt: "Eventry Ticket Booking System",
       featured: false 
     }, 
@@ -463,7 +463,7 @@ const ProjectsSection = () => {
       tech: ['React', 'Firebase', 'Material UI'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
       liveDemoUrl: "#", 
-      image: "/images/suwa-sevana.png", // Replace with your image
+      image: "/images/suwa-sevana.png", 
       imageAlt: "Suwa Sevana Health Care Application",
       featured: false 
     }, 
@@ -474,7 +474,7 @@ const ProjectsSection = () => {
       tech: ['Flutter', 'Dart', 'Google Maps API', 'Firebase'],
       githubUrl: "#",
       liveDemoUrl: "#",
-      image: "/images/smart-parking.jpg", // Replace with your image
+      image: "/images/smart-parking.jpg",
       imageAlt: "Smart Parking Mobile System",
       featured: false
     },
@@ -485,7 +485,7 @@ const ProjectsSection = () => {
       tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
       githubUrl: "#",
       liveDemoUrl: "#",
-      image: "/images/computer-repair.png", // Replace with your image
+      image: "/images/computer-repair.png", 
       imageAlt: "Computer Repair Shop Management System",
       featured: false
     },
@@ -496,7 +496,7 @@ const ProjectsSection = () => {
       tech: ['Java', 'Swing', 'MySQL', 'JDBC', 'OOP'],
       githubUrl: "#",
       liveDemoUrl: "#",
-      image: "/images/hotel-management.png", // Replace with your image
+      image: "/images/hotel-management.png", 
       imageAlt: "Hotel Management System",
       featured: false
     },
@@ -507,7 +507,7 @@ const ProjectsSection = () => {
        tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
       githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements",
       liveDemoUrl: "#",
-      image: "/images/cams.png", // Replace with your image  
+      image: "/images/cams.png",  
       imageAlt: "Class Attendance Management System Dashboard",
       featured: false
     },
@@ -518,7 +518,7 @@ const ProjectsSection = () => {
       tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'XAMPP'],
       githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
       liveDemoUrl: "#",
-      image: "/images/aurora.jpg", // Replace with your image
+      image: "/images/aurora.jpg", 
       imageAlt: "AURORA CEYLON Jewellery Website",
       featured: false
     }
