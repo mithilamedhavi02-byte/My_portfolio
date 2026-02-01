@@ -566,7 +566,7 @@ const ProjectsSection = () => {
                       alt={project.imageAlt || project.title}
                       className="project-img"
                       onError={(e) => {
-                        // If image fails to load, show placeholder
+                       
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
                       }}
@@ -606,11 +606,11 @@ const ProjectsSection = () => {
 
 
 const ContactSection = ({
-  onChange,  // ඔබට onChange විතරක් ඕන, එක parent එකෙන් pass වෙනවා
+  onChange,  
 }) => {
   const formRef = useRef();
   
-  // Local form state
+ 
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -667,7 +667,7 @@ const ContactSection = ({
       [name]: value
     }));
     
-    // Parent onChange call කරන්න (ඇත්නම්)
+    
     if (onChange) {
       onChange(e);
     }
