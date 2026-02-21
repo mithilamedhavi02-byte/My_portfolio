@@ -521,6 +521,17 @@ const ProjectsSection = () => {
       image: "/images/aurora.jpg", 
       imageAlt: "AURORA CEYLON Jewellery Website",
       featured: false
+    },
+        {
+      id: 8,
+      title: "melody_masters",
+       description: "A full-stack e-commerce website for handmade jewellery featuring dynamic content management with PHP and MySQL database. Showcases jewellery collections with elegant UI design and smooth animations.",
+      tech: [ 'CSS', 'JavaScript', 'PHP', 'MySQL', 'XAMPP'],
+      githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
+      liveDemoUrl: "#",
+      image: "/images/melody.png", 
+      imageAlt: "AURORA CEYLON Jewellery Website",
+      featured: false
     }
   ];
   
