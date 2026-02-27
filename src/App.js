@@ -232,6 +232,8 @@ const HeroSection = ({ onDownloadCV }) => {
             <div className="profile-card"> 
               <div className="profile-image"> 
                 <div className="image-glow"></div> 
+                {/* public folder eken profile picture eka ganna - import karanna ona naha */}
+                <img src="/profile.jpg" alt="Mithila Medhavi" className="profile-img" />
               </div> 
             </div> 
           </div> 
@@ -239,7 +241,7 @@ const HeroSection = ({ onDownloadCV }) => {
       </div> 
     </section> 
   ); 
-};
+}; 
 
 
 
@@ -291,59 +293,72 @@ const AboutSection = ({ onDownloadCV }) => {
             </div> 
           </div> 
           
-          <div className="about-visual"> 
-            <div className="experience-card"> 
-              <div className="card-header"> 
-                <h3>Education & Experience</h3> 
-              </div> 
-              <div className="card-content"> 
-                <div className="timeline"> 
-                  {/* Updated Timeline for Fresh Graduate */}
-                  <div className="timeline-item"> 
-                    <div className="timeline-year">2024</div> 
-                    <div className="timeline-content"> 
-                      <h4>BSc (Hons) Computer Science</h4> 
-                      <p>University of Colombo | GPA: 3.5/4.0</p>
-                      <p className="timeline-note">Specialized in Software Engineering</p>
-                    </div> 
-                  </div> 
-                  
-                  <div className="timeline-item"> 
-                    <div className="timeline-year">2023</div> 
-                    <div className="timeline-content"> 
-                      <h4>Final Year Project</h4> 
-                      <p>"Smart Campus Management System"</p>
-                      <p className="timeline-note">Full-stack web application</p>
-                    </div> 
-                  </div> 
-                  
-                  <div className="timeline-item"> 
-                    <div className="timeline-year">2022</div> 
-                    <div className="timeline-content"> 
-                      <h4>Software Development Intern</h4> 
-                      <p>Tech Solutions Lanka (3 months)</p>
-                      <p className="timeline-note">Worked on frontend development</p>
-                    </div> 
-                  </div> 
-                  
-                  <div className="timeline-item"> 
-                    <div className="timeline-year">2020 - 2024</div> 
-                    <div className="timeline-content"> 
-                      <h4>University Activities</h4> 
-                      <p>Computer Society Member</p>
-                      <p className="timeline-note">Hackathon participant, Tech workshops</p>
-                    </div> 
-                  </div> 
-                </div> 
-              </div> 
-              
-              {/* New: Achievement/Highlight Section */}
-            
-            </div> 
+<div className="about-visual"> 
+  <div className="experience-card"> 
+    <div className="card-header"> 
+      <h3>Education </h3> 
+    </div> 
+    <div className="card-content"> 
+      <div className="timeline"> 
+        {/* Education Section */}
+        <div className="timeline-item section-title">
+          
+        </div>
+
+        <div className="timeline-item"> 
+          <div className="timeline-year">2023 - 2027</div> 
+          <div className="timeline-content"> 
+            <h4>BSc (Hons) Software Engineering</h4> 
+            <p>CINEC Campus Malabe | Current GPA: 3.46</p>
+            <p className="timeline-note">Reading</p>
           </div> 
         </div> 
-        
-     
+
+        <div className="timeline-item"> 
+          <div className="timeline-year">2023</div> 
+          <div className="timeline-content"> 
+            <h4>Assured Diploma in Information Technology (DITEC)</h4> 
+            <p>Pearson Assured | ESOFT Metro Campus</p>
+            <p className="timeline-note">Completed</p>
+          </div> 
+        </div>
+
+        {/* Experience Section */}
+        <div className="timeline-item section-title">
+          <h6>Experience & Activities</h6>
+        </div>
+
+        <div className="timeline-item"> 
+          <div className="timeline-year">2026</div> 
+          <div className="timeline-content"> 
+            <h4>Predictive income and repair time analytics and forecasting system</h4> 
+            <p>3 rd Year Group Project (on going)</p>
+            <p className="timeline-note">Worked on frontend development</p>
+          </div> 
+        </div> 
+
+        <div className="timeline-item"> 
+          <div className="timeline-year">2025</div> 
+          <div className="timeline-content"> 
+            <h4>Eventrya – Real-Time University Event Booking System</h4> 
+            <p>2 nd Year Group Project</p>
+            <p className="timeline-note">Worked on frontend development & UI/UX Desing</p>
+          </div> 
+        </div> 
+
+        <div className="timeline-item"> 
+          <div className="timeline-year">2024</div> 
+          <div className="timeline-content"> 
+            <h4>Class-Attendance-Managements</h4> 
+            <p>1 st Year Group Project</p>
+            <p className="timeline-note">Worked on frontend development & UI/UX Desing</p>
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+</div>
+  </div> 
       </div> 
     </section>
   );
@@ -451,7 +466,7 @@ const ProjectsSection = () => {
       description: "Real-time web platform for university event registration. Replaces manual processes with automated booking, seat management, and digital tickets.", 
       tech:  ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'], 
       githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-      liveDemoUrl: "#", 
+      
       image: "/images/eventry.png",
       imageAlt: "Eventry Ticket Booking System",
       featured: false 
@@ -459,65 +474,45 @@ const ProjectsSection = () => {
     { 
       id: 2, 
       title: "Suwa Sevana Health Care App", 
-      description: "Productivity application with real-time collaboration", 
-      tech: ['React', 'Firebase', 'Material UI'], 
-      githubUrl: "https://github.com/mithilamedhavi02-byte/Eventry-Ticket-Booking", 
-      liveDemoUrl: "#", 
+      description: "Suwasewana is an AI-powered system for booking doctor appointments, making online payments, and managing healthcare services easily.", 
+      tech: ['React', 'Tailwind CSS', 'Node.js','Express.js','MongoDB'], 
+      githubUrl: "https://github.com/mithilamedhavi02-byte/suwasewana.git", 
+      
       image: "/images/suwa-sevana.png", 
       imageAlt: "Suwa Sevana Health Care Application",
       featured: false 
     }, 
-    {
-      id: 3,
-      title: "Smart Parking Mobile System",
-      description: "Mobile application for smart parking management with real-time slot availability, reservation system, and digital payment integration. Developed as a 3rd year group project.",
-      tech: ['Flutter', 'Dart', 'Google Maps API', 'Firebase'],
-      githubUrl: "#",
-      liveDemoUrl: "#",
-      image: "/images/smart-parking.jpg",
-      imageAlt: "Smart Parking Mobile System",
-      featured: false
-    },
+  
+  
     {
       id: 4,
-      title: "Computer Repair Shop Management System",
-      description: "Desktop application for managing computer repair shop operations including customer management, repair tracking, inventory management, and billing.",
-      tech: ['Java', 'JavaFX', 'MySQL', 'Scene Builder'],
-      githubUrl: "#",
-      liveDemoUrl: "#",
-      image: "/images/computer-repair.png", 
-      imageAlt: "Computer Repair Shop Management System",
-      featured: false
-    },
-    {
-      id: 5,
       title: "Hotel Management System",
       description:"Java desktop application for hotel operations with guest management, room booking, billing, and MySQL database integration. Features Swing GUI and follows OOP principles.",
       tech: ['Java', 'Swing', 'MySQL', 'JDBC', 'OOP'],
-      githubUrl: "#",
-      liveDemoUrl: "#",
+      githubUrl: "https://github.com/mithilamedhavi02-byte/hotel_management_system-in-java.git",
+      
       image: "/images/hotel-management.png", 
       imageAlt: "Hotel Management System",
       featured: false
     },
     {
-      id: 6,
+      id: 5,
       title: "Class Attendance Management System (CAMS)",
         description: "Web-based attendance tracking system for students and lecturers. Tracks student attendance over 10-week periods with separate interfaces for viewing and updating records.",
        tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
       githubUrl: "https://github.com/mithilamedhavi02-byte/Class-Attendance-Managements",
-      liveDemoUrl: "#",
+    
       image: "/images/cams.png",  
       imageAlt: "Class Attendance Management System Dashboard",
       featured: false
     },
     {
-      id: 7,
+      id: 6,
       title: "AURORA CEYLON",
        description: "A full-stack e-commerce website for handmade jewellery featuring dynamic content management with PHP and MySQL database. Showcases jewellery collections with elegant UI design and smooth animations.",
       tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'XAMPP'],
       githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
-      liveDemoUrl: "#",
+      
       image: "/images/aurora.jpg", 
       imageAlt: "AURORA CEYLON Jewellery Website",
       featured: false
@@ -525,10 +520,10 @@ const ProjectsSection = () => {
         {
       id: 8,
       title: "melody_masters",
-       description: "A full-stack e-commerce website for handmade jewellery featuring dynamic content management with PHP and MySQL database. Showcases jewellery collections with elegant UI design and smooth animations.",
-      tech: [ 'CSS', 'JavaScript', 'PHP', 'MySQL', 'XAMPP'],
-      githubUrl: "https://github.com/mithilamedhavi02-byte/AURORA-CEYLON-",
-      liveDemoUrl: "#",
+       description: "A professional E-commerce web application for a musical instrument shop built with PHP, MySQL, and Bootstrap 5, featuring a dynamic typewriter hero section and AJAX-based product management.",
+      tech: [  'PHP', 'MySQL', 'XAMPP','Bootstrap 5'],
+      githubUrl: "https://github.com/mithilamedhavi02-byte/musical-instrument-store.git",
+      
       image: "/images/melody.png", 
       imageAlt: "AURORA CEYLON Jewellery Website",
       featured: false
@@ -540,10 +535,13 @@ const ProjectsSection = () => {
     <section id="projects" className="projects"> 
       <div className="container"> 
         <div className="section-header"> 
-          <h2 className="section-title"> 
-            <span className="title-number"></span> 
-            My Projects 
-          </h2> 
+        <h2 
+  className="section-title" 
+  style={{ color: 'var(--text-color)' }}
+> 
+  <span className="title-number"></span> 
+  My Projects 
+</h2>
           <div className="section-subtitle">Some of my recent work</div> 
         </div> 
         <div className="projects-showcase"> 
