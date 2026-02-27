@@ -791,7 +791,9 @@ section {
   gap: var(--space-2xl);
   align-items: start;
 }
-
+.section header{
+   color: var(--text-color);
+}
 .about-intro h3 {
   font-size: 1.8rem;
   margin-bottom: var(--space-md);

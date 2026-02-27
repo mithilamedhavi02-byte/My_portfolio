@@ -152,14 +152,12 @@ const HeroSection = ({ onDownloadCV }) => {
   
   const fullName = "Mithila Medhavi";
   const firstName = "Mithila";
-  const lastName = "Medhavi";
   const typingSpeed = 100;
   const deletingSpeed = 50;
   const pauseDuration = 1500;
 
   useEffect(() => {
     let timer;
-    
     if (!isFirstNameComplete) {
       if (currentIndex < firstName.length && !isDeleting) {
         timer = setTimeout(() => {
@@ -167,9 +165,7 @@ const HeroSection = ({ onDownloadCV }) => {
           setCurrentIndex(prev => prev + 1);
         }, typingSpeed);
       } else if (currentIndex === firstName.length && !isDeleting) {
-        timer = setTimeout(() => {
-          setIsDeleting(true);
-        }, pauseDuration);
+        timer = setTimeout(() => setIsDeleting(true), pauseDuration);
       } else if (isDeleting && currentIndex > 0) {
         timer = setTimeout(() => {
           setDisplayText(prev => prev.slice(0, -1));
@@ -187,9 +183,7 @@ const HeroSection = ({ onDownloadCV }) => {
           setCurrentIndex(prev => prev + 1);
         }, typingSpeed);
       } else if (currentIndex === fullName.length && !isDeleting) {
-        timer = setTimeout(() => {
-          setIsDeleting(true);
-        }, pauseDuration * 2);
+        timer = setTimeout(() => setIsDeleting(true), pauseDuration * 2);
       } else if (isDeleting && currentIndex > 0) {
         timer = setTimeout(() => {
           setDisplayText(prev => prev.slice(0, -1));
@@ -201,9 +195,8 @@ const HeroSection = ({ onDownloadCV }) => {
         setCurrentIndex(0);
       }
     }
-
     return () => clearTimeout(timer);
-  }, [currentIndex, isDeleting, isFirstNameComplete, firstName, fullName, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [currentIndex, isDeleting, isFirstNameComplete]);
 
   return ( 
     <section id="home" className="hero"> 
@@ -219,7 +212,6 @@ const HeroSection = ({ onDownloadCV }) => {
           <div className="hero-subtitle"> 
             <span className="subtitle-text">Software Engineer Undergraduate</span> 
           </div> 
-         
           <div className="hero-buttons"> 
             <button className="btn btn-download" onClick={onDownloadCV}> 
               <span className="btn-icon">📥</span> 
@@ -232,7 +224,6 @@ const HeroSection = ({ onDownloadCV }) => {
             <div className="profile-card"> 
               <div className="profile-image"> 
                 <div className="image-glow"></div> 
-                {/* public folder eken profile picture eka ganna - import karanna ona naha */}
                 <img src="/profile.jpg" alt="Mithila Medhavi" className="profile-img" />
               </div> 
             </div> 
@@ -241,8 +232,7 @@ const HeroSection = ({ onDownloadCV }) => {
       </div> 
     </section> 
   ); 
-}; 
-
+};
 
 
 
@@ -1096,10 +1086,7 @@ const App = () => {
 
   useEffect(() => { 
     const handleMouseMove = (e) => { 
-      setMousePosition({ 
-        x: e.clientX, 
-        y: e.clientY 
-      }); 
+      setMousePosition({ x: e.clientX, y: e.clientY }); 
     }; 
 
     const handleScroll = () => { 
@@ -1142,111 +1129,49 @@ const App = () => {
 
   const handleFormChange = (e) => { 
     const { name, value } = e.target; 
-    setForm({ 
-      ...form, 
-      [name]: value, 
-    }); 
+    setForm({ ...form, [name]: value }); 
   }; 
 
   const handleFormSubmit = (e) => { 
     e.preventDefault(); 
     setFormLoading(true); 
-
     setTimeout(() => { 
       setFormLoading(false); 
       setIsSubmitted(true); 
-      console.log('Contact form submitted:', form); 
-
-      setForm({ 
-        name: "", 
-        email: "", 
-        message: "", 
-      }); 
-
-      setTimeout(() => { 
-        setIsSubmitted(false); 
-      }, 5000); 
+      setForm({ name: "", email: "", message: "" }); 
+      setTimeout(() => setIsSubmitted(false), 5000); 
     }, 2000); 
   }; 
 
-  const downloadSimplePDF = () => { 
-    try {
-      const pdf = new jsPDF();
-      
-      pdf.setFontSize(24);
-      pdf.setTextColor(108, 99, 255);
-      pdf.text('Mithila Medhavi', 105, 20, { align: 'center' });
-      
-      pdf.setFontSize(16);
-      pdf.setTextColor(0, 0, 0);
-      pdf.text('Frontend Developer | React Specialist', 105, 30, { align: 'center' });
-      
-      pdf.setFontSize(12);
-      pdf.text('Contact Information:', 20, 50);
-      pdf.text('Email: mithilamedhavi02@gmail.com', 20, 60);
-      pdf.text('Phone: +94 767100617', 20, 70);
-      pdf.text('Location: 3/C Palugama, Dompe, Sri Lanka', 20, 80);
-      
-      pdf.text('Technical Skills:', 20, 100);
-      const skills = [
-        'React.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3',
-        'Node.js', 'Git', 'Webpack', 'Python', 'MySQL'
-      ];
-      skills.forEach((skill, index) => {
-        pdf.text(`• ${skill}`, 25, 110 + (index * 7));
-      });
-      
-      pdf.text('Professional Experience:', 20, 180);
-      pdf.text('• Frontend Developer (2021 - Present)', 25, 190);
-      pdf.text('  Freelance & Contract Projects', 30, 197);
-      pdf.text('• Web Development Intern (2020 - 2021)', 25, 207);
-      pdf.text('  Tech Startup Colombo', 30, 214);
-      
-      pdf.text('Education:', 20, 230);
-      pdf.text('• BSc Computer Science (2016 - 2020)', 25, 240);
-      pdf.text('  University of Colombo', 30, 247);
-      
-      pdf.text('Projects:', 20, 260);
-      pdf.text('• Class Attendance Management System (CAMS)', 25, 270);
-      pdf.text('• Eventry Ticket Booking System', 25, 277);
-      pdf.text('• Aurora Ceylon Jewelry Website', 25, 284);
-      
-      pdf.save('Mithila_Medhavi_Portfolio.pdf');
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
-    }
+  // --- අලුතින් සකස් කළ CV Download Function එක ---
+  const handleCVDownload = () => { 
+    const link = document.createElement('a');
+    link.href = '/cv_1.pdf'; // ඔබ public folder එකට දැමූ නම
+    link.setAttribute('download', 'Mithila_Medhavi_CV.pdf'); 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }; 
 
   return ( 
     <div className="portfolio" ref={portfolioRef}> 
       <LoadingScreen isLoading={isLoading} /> 
-      
       <VideoBackground />
-      
-      <BackgroundElements 
-        mousePosition={mousePosition}
-        scrollProgress={scrollProgress}
-      /> 
+      <BackgroundElements mousePosition={mousePosition} scrollProgress={scrollProgress} /> 
       
       <Navigation 
         activeSection={activeSection}
         isMenuOpen={isMenuOpen}
         onNavClick={handleNavClick}
         onMenuToggle={() => setIsMenuOpen(!isMenuOpen)}
-        onDownloadCV={downloadSimplePDF}
+        onDownloadCV={handleCVDownload}
       /> 
       
-      <HeroSection 
-        onDownloadCV={downloadSimplePDF}
-      /> 
+      <HeroSection onDownloadCV={handleCVDownload} /> 
       
-      <AboutSection 
-        onDownloadCV={downloadSimplePDF}
-      /> 
+      <AboutSection onDownloadCV={handleCVDownload} /> 
       
       <SkillsSection /> 
-      
       <ProjectsSection /> 
       
       <ContactSection 
@@ -1256,10 +1181,9 @@ const App = () => {
         onChange={handleFormChange}
         onSubmit={handleFormSubmit}
       /> 
-      
       <Footer /> 
     </div> 
   ); 
-}; 
+};
 
 export default App;
