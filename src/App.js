@@ -522,11 +522,11 @@ const ProjectsSection = () => {
   id: 9,
   title: "Park-Pro",
   description: "A high-end Smart Parking Management System featuring a cinematic video background and a sleek glassmorphic UI. It enables real-time hub discovery, automated 15-minute booking expirations, and live duration tracking for parked vehicles.",
-  tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Dart', 'Video Player'],
+  tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Dart'],
   githubUrl: "https://github.com/mithilamedhavi02-byte/smart_parking_app.git",
-  image: "/images/park_pro.png", 
+  image: "/images/park_pro.jpeg", 
   imageAlt: "Park-Pro Mobile App Preview",
-  featured: true // මෙය 'true' කිරීමෙන් බොහෝ Portfolio වල කාඩ් එක මැදට හෝ ඉහළට පැමිණේ
+  featured: false // මෙය 'true' කිරීමෙන් බොහෝ Portfolio වල කාඩ් එක මැදට හෝ ඉහළට පැමිණේ
 }
 
   ];
@@ -552,14 +552,7 @@ const ProjectsSection = () => {
                 <div className="project-image"> 
                   <div className="image-overlay"> 
                     <div className="project-links"> 
-                      <a 
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-btn"
-                      > 
-                        Live Demo 
-                      </a> 
+                   
                       <a 
                         href={project.githubUrl}
                         target="_blank"
