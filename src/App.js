@@ -517,7 +517,18 @@ const ProjectsSection = () => {
       image: "/images/melody.png", 
       imageAlt: "AURORA CEYLON Jewellery Website",
       featured: false
-    }
+    },
+   {
+  id: 9,
+  title: "Park-Pro",
+  description: "A high-end Smart Parking Management System featuring a cinematic video background and a sleek glassmorphic UI. It enables real-time hub discovery, automated 15-minute booking expirations, and live duration tracking for parked vehicles.",
+  tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Dart', 'Video Player'],
+  githubUrl: "https://github.com/mithilamedhavi02-byte/smart_parking_app.git",
+  image: "/images/park_pro.png", 
+  imageAlt: "Park-Pro Mobile App Preview",
+  featured: true // මෙය 'true' කිරීමෙන් බොහෝ Portfolio වල කාඩ් එක මැදට හෝ ඉහළට පැමිණේ
+}
+
   ];
   
 
