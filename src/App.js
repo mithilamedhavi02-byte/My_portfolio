@@ -250,38 +250,47 @@ const AboutSection = ({ onDownloadCV }) => {
           </h2> 
         </div> 
         <div className="about-content"> 
-          <div className="about-text"> 
-            <div className="about-intro"> 
-              <h3>Software Engineering Undergraduate</h3> 
-            <p>
-  I am a dedicated third-year{" "}
-  <span className="highlight">BSc (Hons) Software Engineering undergraduate</span>{" "}
-  at the Faculty of Computing, CINEC Campus, with a strong foundation in both
-  theoretical concepts and practical software development. My academic journey
-  is complemented by hands-on project experience, enabling me to transform
-  complex ideas into efficient, real-world software solutions. I am actively
-  seeking internship opportunities to further enhance my technical skills, gain
-  industry exposure, and contribute to innovative and impactful software
-  engineering initiatives.
-</p>
 
-            </div> 
-            
-            <div className="about-details"> 
-              <div className="detail-item"> 
-                <h4>🎯 Technical Focus</h4> 
-                <p> Modern JavaScript, Responsive Web Design, Database Systems,UI/UX desing ,MobileDevelopment</p> 
-              </div> 
-              <div className="detail-item"> 
-                <h4>💡 Development Approach</h4> 
-                <p>Clean code practices, problem-solving mindset, agile methodologies, collaborative teamwork</p> 
-              </div> 
-              <div className="detail-item"> 
-                <h4>🚀 Career Goal</h4> 
-                <p>To contribute to innovative projects and grow as a professional software engineer</p> 
-              </div> 
-            </div> 
-          </div> 
+
+
+
+ <div className="about-text"> 
+  <div className="about-intro"> 
+    <h3>Software Engineering Undergraduate | Full-Stack & Mobile Developer</h3> 
+    <p>
+      I am a dedicated third-year <span className="highlight">BSc (Hons) Software Engineering undergraduate</span> at the Faculty of Computing, CINEC Campus. 
+      I am a <span className="highlight">versatile developer</span> with a passion for building seamless digital experiences across web and mobile platforms. 
+      I specialize in bridging the gap between intuitive UI/UX design and robust, scalable backend architectures.
+    </p>
+    <p>
+      I am a <span className="highlight">fast learner</span> with a strong problem-solving mindset, always eager to master new technologies 
+      and adapt to evolving industry trends. I am actively seeking an internship to contribute to innovative software 
+      initiatives, gain industry exposure, and grow as a professional engineer within a dynamic team.
+    </p>
+  </div> 
+  
+  <div className="about-details"> 
+    <div className="detail-item"> 
+      <h4>📱 Mobile & Frontend</h4> 
+      <p>Flutter, Native Android (Java/Kotlin), Modern JavaScript (ES6+), & Responsive Web Design</p> 
+    </div> 
+    <div className="detail-item"> 
+      <h4>🗄️ Database & Cloud</h4> 
+      <p>MySQL, MongoDB, Firebase Realtime Database, & RESTful API Architecture</p> 
+    </div> 
+    <div className="detail-item"> 
+      <h4>🎨 UI/UX & Methodology</h4> 
+      <p>User-Centric Design (Figma), Clean Code Practices, Agile Methodologies, & Collaborative Teamwork</p> 
+    </div> 
+    <div className="detail-item"> 
+      <h4>🚀 Career Vision</h4> 
+      <p>To leverage my technical expertise and adaptability to solve real-world problems while evolving into a lead software engineer.</p> 
+    </div> 
+  </div> 
+</div>
+
+
+
           
 <div className="about-visual"> 
   <div className="experience-card"> 
