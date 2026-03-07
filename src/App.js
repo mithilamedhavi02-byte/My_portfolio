@@ -397,7 +397,7 @@ const SkillsSection = () => {
       <div className="container">
         <div className="section-header"> 
           <h2 className="section-title"> 
-            <span className="title-number">03</span> 
+            <span className="title-number"></span> 
             Technical Skills
           </h2> 
          
