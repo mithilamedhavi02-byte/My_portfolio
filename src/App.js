@@ -238,6 +238,11 @@ const HeroSection = ({ onDownloadCV }) => {
 
 
 
+
+
+
+
+
 // ==================== About Section ==================== 
 const AboutSection = ({ onDownloadCV }) => { 
   return ( 
@@ -249,119 +254,104 @@ const AboutSection = ({ onDownloadCV }) => {
             About Me 
           </h2> 
         </div> 
+
         <div className="about-content"> 
 
+          <div className="about-text"> 
+            <div className="about-intro"> 
+              <h3>Software Engineering Undergraduate </h3> 
+              
+<p>
+  I am a motivated <span className="highlight">Software Engineering undergraduate</span> 
+  currently studying BSc (Hons) Software Engineering at the 
+  <span className="highlight">Faculty of Computing, CINEC Campus</span>. 
+  I am passionate about building reliable and user-friendly software solutions 
+  for both web and mobile platforms.
+</p>
+
+<p>
+  I enjoy turning complex problems into simple and efficient applications 
+  using modern development technologies. Through my academic projects, I have 
+  gained practical experience in 
+  <span className="highlight">frontend development, UI/UX design, and database integration</span>. 
+  I am continuously learning new technologies and improving my engineering 
+  skills, and I am currently seeking a 
+  <span className="highlight">Software Engineering internship</span> where I can 
+  contribute to real-world projects and grow as a developer.
+</p>       </div> 
+            
+
+          </div>
 
 
+          <div className="about-visual"> 
+            <div className="experience-card"> 
+              <div className="card-header"> 
+                <h3>Education</h3> 
+              </div> 
 
- <div className="about-text"> 
-  <div className="about-intro"> 
-    <h3>Software Engineering Undergraduate | Full-Stack & Mobile Developer</h3> 
-    <p>
-      I am a dedicated third-year <span className="highlight">BSc (Hons) Software Engineering undergraduate</span> at the Faculty of Computing, CINEC Campus. 
-      I am a <span className="highlight">versatile developer</span> with a passion for building seamless digital experiences across web and mobile platforms. 
-      I specialize in bridging the gap between intuitive UI/UX design and robust, scalable backend architectures.
-    </p>
-    <p>
-      I am a <span className="highlight">fast learner</span> with a strong problem-solving mindset, always eager to master new technologies 
-      and adapt to evolving industry trends. I am actively seeking an internship to contribute to innovative software 
-      initiatives, gain industry exposure, and grow as a professional engineer within a dynamic team.
-    </p>
-  </div> 
-  
-  <div className="about-details"> 
-    <div className="detail-item"> 
-      <h4>📱 Mobile & Frontend</h4> 
-      <p>Flutter, Native Android (Java/Kotlin), Modern JavaScript (ES6+), & Responsive Web Design</p> 
-    </div> 
-    <div className="detail-item"> 
-      <h4>🗄️ Database & Cloud</h4> 
-      <p>MySQL, MongoDB, Firebase Realtime Database, & RESTful API Architecture</p> 
-    </div> 
-    <div className="detail-item"> 
-      <h4>🎨 UI/UX & Methodology</h4> 
-      <p>User-Centric Design (Figma), Clean Code Practices, Agile Methodologies, & Collaborative Teamwork</p> 
-    </div> 
-    <div className="detail-item"> 
-      <h4>🚀 Career Vision</h4> 
-      <p>To leverage my technical expertise and adaptability to solve real-world problems while evolving into a lead software engineer.</p> 
-    </div> 
-  </div> 
-</div>
+              <div className="card-content"> 
+                <div className="timeline"> 
 
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2023 - 2027</div> 
+                    <div className="timeline-content"> 
+                      <h4>BSc (Hons) Software Engineering</h4> 
+                      <p>CINEC Campus, Malabe | Current GPA: 3.46</p>
+                      <p className="timeline-note">Undergraduate</p>
+                    </div> 
+                  </div> 
 
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2023</div> 
+                    <div className="timeline-content"> 
+                      <h4>Assured Diploma in Information Technology (DITEC)</h4> 
+                      <p>Pearson Assured | ESOFT Metro Campus</p>
+                      <p className="timeline-note">Completed</p>
+                    </div> 
+                  </div>
 
-          
-<div className="about-visual"> 
-  <div className="experience-card"> 
-    <div className="card-header"> 
-      <h3>Education </h3> 
-    </div> 
-    <div className="card-content"> 
-      <div className="timeline"> 
-        {/* Education Section */}
-        <div className="timeline-item section-title">
-          
-        </div>
+                  <div className="timeline-item section-title">
+                    <h6>Projects & Experience</h6>
+                  </div>
 
-        <div className="timeline-item"> 
-          <div className="timeline-year">2023 - 2027</div> 
-          <div className="timeline-content"> 
-            <h4>BSc (Hons) Software Engineering</h4> 
-            <p>CINEC Campus Malabe | Current GPA: 3.46</p>
-            <p className="timeline-note">Reading</p>
-          </div> 
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2026</div> 
+                    <div className="timeline-content"> 
+                      <h4>Predictive Income and Repair Time Analytics System</h4> 
+                      <p>3rd Year Group Project (Ongoing)</p>
+                      <p className="timeline-note">Frontend Development</p>
+                    </div> 
+                  </div> 
+
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2025</div> 
+                    <div className="timeline-content"> 
+                      <h4>Eventrya – University Event Booking System</h4> 
+                      <p>2nd Year Group Project</p>
+                      <p className="timeline-note">Frontend Development & UI/UX Design</p>
+                    </div> 
+                  </div> 
+
+                  <div className="timeline-item"> 
+                    <div className="timeline-year">2024</div> 
+                    <div className="timeline-content"> 
+                      <h4>Class Attendance Management System</h4> 
+                      <p>1st Year Group Project</p>
+                      <p className="timeline-note">Frontend Development & UI/UX Design</p>
+                    </div> 
+                  </div> 
+
+                </div> 
+              </div> 
+            </div> 
+          </div>
+
         </div> 
-
-        <div className="timeline-item"> 
-          <div className="timeline-year">2023</div> 
-          <div className="timeline-content"> 
-            <h4>Assured Diploma in Information Technology (DITEC)</h4> 
-            <p>Pearson Assured | ESOFT Metro Campus</p>
-            <p className="timeline-note">Completed</p>
-          </div> 
-        </div>
-
-        {/* Experience Section */}
-        <div className="timeline-item section-title">
-          <h6>Experience & Activities</h6>
-        </div>
-
-        <div className="timeline-item"> 
-          <div className="timeline-year">2026</div> 
-          <div className="timeline-content"> 
-            <h4>Predictive income and repair time analytics and forecasting system</h4> 
-            <p>3 rd Year Group Project (on going)</p>
-            <p className="timeline-note">Worked on frontend development</p>
-          </div> 
-        </div> 
-
-        <div className="timeline-item"> 
-          <div className="timeline-year">2025</div> 
-          <div className="timeline-content"> 
-            <h4>Eventrya – Real-Time University Event Booking System</h4> 
-            <p>2 nd Year Group Project</p>
-            <p className="timeline-note">Worked on frontend development & UI/UX Desing</p>
-          </div> 
-        </div> 
-
-        <div className="timeline-item"> 
-          <div className="timeline-year">2024</div> 
-          <div className="timeline-content"> 
-            <h4>Class-Attendance-Managements</h4> 
-            <p>1 st Year Group Project</p>
-            <p className="timeline-note">Worked on frontend development & UI/UX Desing</p>
-          </div> 
-        </div> 
-      </div> 
-    </div> 
-  </div> 
-</div>
-  </div> 
       </div> 
     </section>
   );
-}; 
+};
 
 
 
